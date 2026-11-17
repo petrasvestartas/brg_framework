@@ -1,15 +1,19 @@
 Catenary cables, fd_catenary_cables.py: parallel hanging cables under selfweight with very weak transverse edges.
 
-Adapted from the COMPAS FormFinder catenary cables example, PDF pages 85-94: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/tensile-form-active/funicular/catenary-cables.md
+Adapted from the COMPAS FormFinder catenary cables example, PDF pages 85 to 94: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/tensile-form-active/funicular/catenary-cables.md
 
 Historical precedent: Eero Saarinen's Washington Dulles International Airport, 1962, and Poleni's drawing of Hooke's analogy; see `04_references.md`.
 
-```python
-"""Catenary cables: tributary selfweight and half-strength boundary cables."""
+Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
+```python
+"""Catenary cables: tributary selfweight and half strength boundary cables."""
+
+from compas.colors import Color
 from compas.datastructures import Mesh
 from compas_fd.loads import SelfweightCalculator
 from compas_fd.solvers import fd_numpy
+from compas_viewer import Viewer
 
 mesh = Mesh.from_meshgrid(dx=10, nx=10)
 mesh.update_default_vertex_attributes(t=0.1)
@@ -33,4 +37,16 @@ result = fd_numpy(vertices=vertices, fixed=fixed, edges=edges, forcedensities=fo
 print("lowest node:", result.vertices[result.vertices[:, 2].argmin()])
 print("height range:", result.vertices[:, 2].min(), result.vertices[:, 2].max())
 print("force range:", result.forces.min(), result.forces.max())
+
+for vertex, xyz in zip(mesh.vertices(), result.vertices.tolist()):
+    mesh.vertex_attributes(vertex, "xyz", xyz)
+
+viewer = Viewer()
+viewer.scene.add(
+    mesh,
+    show_points=True,
+    vertexcolor={vertex: Color.from_hex("#2a6fdb") for vertex in fixed},
+    pointsize=8,
+)
+viewer.show()
 ```

@@ -1,19 +1,24 @@
 Curve constrained net, fd_curve_constraints.py: four curved boundaries carry sliding supports while only the corners remain permanently fixed.
 
-Adapted from the COMPAS FormFinder curve constraints example, PDF pages 127-133: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-advanced/curve-constraints-geometry-generation.md
+Adapted from the COMPAS FormFinder curve constraints example, PDF pages 127 to 133: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-advanced/curve-constraints-geometry-generation.md
 
-Historical precedent: cable-net and fabric formed thin shell by BRG and Escobedo Construction, Buda, Texas, 2014; see `04_references.md`.
+Historical precedent: cable net and fabric formed thin shell by BRG and Escobedo Construction, Buda, Texas, 2014; see `04_references.md`.
 
-The small Bezier subclass adds closest-point projection with SciPy, so this example needs only compas_fd and its normal dependencies, not a Rhino or OpenCascade NURBS backend.
+The small Bezier subclass adds closest point projection with SciPy, so this example needs only `compas_fd` and `compas_viewer`.
+
+Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
 """Curve constrained net: quadratic Bezier boundaries with sliding supports."""
 
+from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Bezier
+from compas.geometry import Polyline
 from compas_fd.constraints import Constraint
 from compas_fd.constraints import CurveConstraint
 from compas_fd.solvers import fd_constrained_numpy
+from compas_viewer import Viewer
 from scipy.optimize import minimize_scalar
 
 
@@ -71,4 +76,15 @@ result = fd_constrained_numpy(
 print("curve constrained supports:", sum(constraint is not None for constraint in constraints))
 print("height range:", result.vertices[:, 2].min(), result.vertices[:, 2].max())
 print("force range:", result.forces.min(), result.forces.max())
+
+for vertex, xyz in zip(mesh.vertices(), result.vertices.tolist()):
+    mesh.vertex_attributes(vertex, "xyz", xyz)
+
+vertexcolor = {vertex: Color.from_hex("#2a6fdb" if vertex in corners else "#d62828") for vertex in fixed}
+
+viewer = Viewer()
+viewer.scene.add(mesh, show_points=True, vertexcolor=vertexcolor, pointsize=8)
+for curve in curves:
+    viewer.scene.add(Polyline([curve.point_at(i / 32) for i in range(33)]), linecolor=Color.from_hex("#2a6fdb"), linewidth=3)
+viewer.show()
 ```

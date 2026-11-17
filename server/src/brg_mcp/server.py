@@ -1,10 +1,11 @@
 """The BRG MCP server.
 
-Every markdown file ``src/brg_mcp/<folder>/<page>.md`` is one command.
+Every markdown file ``src/brg_mcp/<folder>/<page>.md`` (or ``<folder>/<subfolder>/<page>.md``) is one command.
 ``readme.md`` is the command of the folder, every other page adds its name::
 
-    fd/readme.md   ->   fd
-    fd/algorithm.md     ->   fd_algorithm
+    fd/readme.md                     ->   fd
+    fd/01_algorithm.md               ->   fd_algorithm
+    fd/10_compas/03_hypar_membrane.md ->  fd_compas_hypar_membrane
 
 A new command is a new markdown file; this file does not change.
 Each command reaches the chatbot in two ways:
@@ -16,7 +17,6 @@ Each command reaches the chatbot in two ways:
 
 """
 
-import os
 from pathlib import Path
 
 from fastmcp import FastMCP
@@ -40,24 +40,62 @@ def command_name(path):
     Parameters
     ----------
     path : :class:`pathlib.Path`
-        The file ``<folder>/<page>.md``.
+        A markdown file inside ``src/brg_mcp/``.
 
     Returns
     -------
     str
-        ``<folder>`` for ``readme.md``, ``<folder>_<page>`` otherwise.
+        ``<folder>`` for ``readme.md``, ``<folder>_<page>`` (or ``<folder>_<subfolder>_<page>``) otherwise.
 
     """
-    folder, page = path.relative_to(HERE).with_suffix("").parts
-    return folder if page == "readme" else "{}_{}".format(folder, plain(page))
+    parts = [plain(part) for part in path.relative_to(HERE).with_suffix("").parts if part != "readme"]
+    return "_".join(parts)
+
+
+def _sort_key(path):
+    rel = path.relative_to(HERE)
+    return (rel.parts[0], len(rel.parts), path.stem != "readme", rel.parts)
 
 
 # Finds the file names.
-COMMANDS = {command_name(path): path for path in sorted(HERE.glob("*/*.md"))}
+COMMANDS = {command_name(path): path for path in sorted([*HERE.glob("*/*.md"), *HERE.glob("*/*/*.md")], key=_sort_key)}
+
+
+def summary(path):
+    """Return a short one-line label from the first line of ``path``."""
+    first = path.read_text(encoding="utf-8").strip().splitlines()[0].lstrip("# ").rstrip(":")
+    if len(first) > 90:
+        return "Overview"
+    return first.split(":", 1)[0].strip()
+
+
+def command_list():
+    """Format all available commands as a grouped Markdown bullet list."""
+    groups = {}
+    for cmd, path in COMMANDS.items():
+        parts = path.relative_to(HERE).parts
+        group = parts[0] if len(parts) == 2 else "{}/{}".format(parts[0], plain(parts[1]))
+        groups.setdefault(group, []).append("- `mcp_brg_{}`: {}".format(cmd, summary(path)))
+    sections = ["### `{}`\n\n{}".format(group, "\n".join(lines)) for group, lines in groups.items()]
+    return (
+        "Reply with this exact Markdown list (keeping headings, bullet points, and code formatting intact):\n\n"
+        "## BRG MCP Commands\n\n" + "\n\n".join(sections)
+    )
+
+
+# A page with Python code shows the script (with compas_viewer) and offers to save and run it.
+RUN = (
+    "Reply with the full Markdown text below (keeping all headings, bullet lists, links, and the complete Python code block with `compas_viewer` intact). "
+    "At the end, ask the user if they want you to save and run the Python script now. "
+    "When the user confirms, write the Python code block to its named `.py` file in the current working folder, "
+    "ensure `compas_fd` and `compas_viewer` are installed (if no active Python environment has them, install `uv` if missing, "
+    "run `uv init --bare` and `uv add compas_fd compas_viewer`), and run `uv run python <file>.py` so it prints the output "
+    "and opens the 3D `compas_viewer` window.\n\n"
+)
 
 
 def reply(name):
-    """The text of a command, with the instruction to repeat it as it is.
+    """The text of a command, formatted for chat display.
 
     The ``readme.md`` of a folder ends with the list of the other pages in that folder, in the order of their numbers.
     A page with a notebook folder of the same name, numbers aside, such as ``06_exercises.md`` and ``07_exercises/``, ends with a link
@@ -77,39 +115,15 @@ def reply(name):
     text = path.read_text(encoding="utf-8").strip()
     if path.stem == "readme":
         pages = [other for other in COMMANDS if other != name and COMMANDS[other].parent == path.parent]
-        text += "\n\nMore information:\n\n" + "\n".join("- {}: mcp_brg_{}".format(page.removeprefix(name + "_").capitalize(), page) for page in pages)
+        text += "\n\n## More information\n\n" + "\n".join(
+            "- {}: `mcp_brg_{}`".format(page.removeprefix(name + "_").capitalize(), page) for page in pages
+        )
     notebooks = notebooks_of(path)
     if notebooks:
-        text += "\n\nNotebooks:\n\n" + "\n".join("- {}: {}".format(title(notebook), link(notebook)) for notebook in notebooks)
-    if "```python" in text and in_editor():
-        return WRITE + text.strip()
-    return "Reply with exactly this text, word for word, nothing added:\n\n" + text.strip()
-
-
-# A page with Python code, asked from a code editor, becomes files in the open folder instead of text.
-WRITE = (
-    "Write each Python example below to its own file, named as the text says, in the current working folder. "
-    "If no Python environment is active there, install uv if it is missing, run `uv init --bare` and `uv add compas_fd`. "
-    "Run every file with `uv run python <file>` and reply with one line per file: its name and what it printed. "
-    "Then give the links of the page.\n\n"
-)
-
-
-def in_editor():
-    """Whether the chatbot runs inside a code editor such as VS Code, Cursor or a JetBrains IDE.
-
-    The server is started by the chatbot and inherits its environment.
-
-    Returns
-    -------
-    bool
-
-    """
-    return (
-        os.environ.get("TERM_PROGRAM") in ("vscode", "cursor")
-        or os.environ.get("CLAUDE_CODE_ENTRYPOINT", "").endswith("vscode")
-        or os.environ.get("TERMINAL_EMULATOR") == "JetBrains-JediTerm"
-    )
+        text += "\n\n## Notebooks\n\n" + "\n".join("- [{}]({})".format(title(notebook), link(notebook)) for notebook in notebooks)
+    if "```python" in text:
+        return RUN + text.strip()
+    return "Reply with this exact Markdown text (keeping all headings, bullet lists, and links intact), nothing added:\n\n" + text.strip()
 
 
 # ==============================================================================
@@ -141,7 +155,10 @@ for name in COMMANDS:
     add_prompt(name)
 
 
-@mcp.tool(description=RULE)
+@mcp.tool(
+    description=RULE,
+    annotations={"readOnlyHint": True, "destructiveHint": False, "idempotentHint": True, "openWorldHint": False},
+)
 def command(name: str):
     """Answer a command typed as text, for chatbots without slash commands.
 
@@ -158,7 +175,7 @@ def command(name: str):
     """
     name = name.strip().lstrip("/").removeprefix("mcp__brg__").removeprefix("mcp_brg").lstrip("_")
     if name not in COMMANDS:
-        return "Reply with exactly this list, nothing added:\n\n" + "\n".join("mcp_brg_{}".format(command) for command in COMMANDS)
+        return command_list()
     return reply(name)
 
 

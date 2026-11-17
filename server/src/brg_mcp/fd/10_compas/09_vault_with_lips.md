@@ -1,15 +1,19 @@
-Vault with lips, fd_vault_with_lips.py: a compression-only vault under selfweight with stronger boundary loops.
+Vault with lips, fd_vault_with_lips.py: a compression vault under selfweight with stronger boundary loops.
 
-Adapted from the COMPAS FormFinder vault example, PDF pages 102-112: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/compressive-form-active/vault-with-lips.md
+Adapted from the COMPAS FormFinder vault example, PDF pages 102 to 112: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/compressive-form-active/vault-with-lips.md
 
 Historical precedent: Heinz Isler's Tennishalle in Allschwil; see `04_references.md`.
+
+Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
 """Vault with lips: q = -3 on the boundaries and q = -1 inside."""
 
+from compas.colors import Color
 from compas.datastructures import Mesh
 from compas_fd.loads import SelfweightCalculator
 from compas_fd.solvers import fd_numpy
+from compas_viewer import Viewer
 
 mesh = Mesh.from_meshgrid(dx=10, nx=10)
 mesh.update_default_vertex_attributes(t=0.1)
@@ -26,4 +30,16 @@ result = fd_numpy(vertices=vertices, fixed=fixed, edges=edges, forcedensities=fo
 print("crown:", result.vertices[60])
 print("height range:", result.vertices[:, 2].min(), result.vertices[:, 2].max())
 print("force range:", result.forces.min(), result.forces.max())
+
+for vertex, xyz in zip(mesh.vertices(), result.vertices.tolist()):
+    mesh.vertex_attributes(vertex, "xyz", xyz)
+
+viewer = Viewer()
+viewer.scene.add(
+    mesh,
+    show_points=True,
+    vertexcolor={vertex: Color.from_hex("#2a6fdb") for vertex in fixed},
+    pointsize=10,
+)
+viewer.show()
 ```

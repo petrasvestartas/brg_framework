@@ -1,15 +1,19 @@
 Catenary arch with corrugations, fd_corrugated_arch.py: negative force densities invert the hanging cables and alternating values create corrugations.
 
-Adapted from the COMPAS FormFinder corrugated arch example, PDF pages 96-101: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/compressive-form-active/catenary-arch-with-corrugations.md
+Adapted from the COMPAS FormFinder corrugated arch example, PDF pages 96 to 101: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-basic/compressive-form-active/catenary-arch-with-corrugations.md
 
 Historical precedents: Poleni's drawing of Hooke's analogy, Ctesiphon Arch, and Eladio Dieste's Navios Corporation Silos; see `04_references.md`.
 
-```python
-"""Corrugated arch: compression-only cables with alternating force densities."""
+Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
+```python
+"""Corrugated arch: compression cables with alternating force densities."""
+
+from compas.colors import Color
 from compas.datastructures import Mesh
 from compas_fd.loads import SelfweightCalculator
 from compas_fd.solvers import fd_numpy
+from compas_viewer import Viewer
 
 mesh = Mesh.from_meshgrid(dx=10, nx=10)
 mesh.update_default_vertex_attributes(t=0.1)
@@ -35,4 +39,16 @@ result = fd_numpy(vertices=vertices, fixed=fixed, edges=edges, forcedensities=fo
 print("midspan rises:", [round(result.vertices[5 * 11 + j, 2], 3) for j in range(1, 10)])
 print("height range:", result.vertices[:, 2].min(), result.vertices[:, 2].max())
 print("force range:", result.forces.min(), result.forces.max())
+
+for vertex, xyz in zip(mesh.vertices(), result.vertices.tolist()):
+    mesh.vertex_attributes(vertex, "xyz", xyz)
+
+viewer = Viewer()
+viewer.scene.add(
+    mesh,
+    show_points=True,
+    vertexcolor={vertex: Color.from_hex("#2a6fdb") for vertex in fixed},
+    pointsize=8,
+)
+viewer.show()
 ```

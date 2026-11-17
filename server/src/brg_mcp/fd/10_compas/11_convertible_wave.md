@@ -1,16 +1,20 @@
 Convertible wave, fd_convertible_wave.py: the ridge and valley wave with three intermediate supports free to slide on line constraints.
 
-Adapted from the COMPAS FormFinder line constraints example, PDF pages 123-126: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-advanced/line-constraints-convertible-wave.md
+Adapted from the COMPAS FormFinder line constraints example, PDF pages 123 to 126: https://github.com/BlockResearchGroup/compas-FoFin/blob/main/gitbook/examples-advanced/line-constraints-convertible-wave.md
 
 Historical precedent: convertible membrane roofing at Metzgergasse, Buchs; see `04_references.md`.
+
+Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
 """Convertible wave: three supports slide between fixed corner anchors."""
 
+from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line
 from compas_fd.constraints import Constraint
 from compas_fd.solvers import fd_constrained_numpy
+from compas_viewer import Viewer
 
 mesh = Mesh.from_meshgrid(dx=10, nx=20)
 support_y = {0, 2.5, 5, 7.5, 10}
@@ -50,4 +54,14 @@ result = fd_constrained_numpy(vertices=vertices, fixed=fixed, edges=edges, force
 print("sliding supports:", result.vertices[sliding])
 print("height range:", result.vertices[:, 2].min(), result.vertices[:, 2].max())
 print("force range:", result.forces.min(), result.forces.max())
+
+for vertex, xyz in zip(mesh.vertices(), result.vertices.tolist()):
+    mesh.vertex_attributes(vertex, "xyz", xyz)
+
+sliding_set = set(sliding)
+vertexcolor = {vertex: Color.from_hex("#d62828" if vertex in sliding_set else "#2a6fdb") for vertex in fixed}
+
+viewer = Viewer()
+viewer.scene.add(mesh, show_points=True, vertexcolor=vertexcolor, pointsize=10)
+viewer.show()
 ```

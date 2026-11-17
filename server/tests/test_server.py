@@ -9,6 +9,7 @@ from fastmcp.client.transports import StdioTransport
 
 from brg_mcp.server import COMMANDS
 from brg_mcp.server import mcp
+from brg_mcp.server import reply
 from brg_mcp.teaching import link
 from brg_mcp.teaching import notebooks_of
 
@@ -30,10 +31,12 @@ def test_instructions_name_every_command():
 
 def test_readme_lists_the_pages_of_its_folder():
     text = ask(lambda client: client.call_tool("command", {"name": "mcp_brg_fd"})).content[0].text
-    assert all("mcp_brg_{}".format(name) in text for name in COMMANDS if name.startswith("fd_"))
+    assert all("mcp_brg_{}".format(name) in text for name in COMMANDS if COMMANDS[name].parent.name == "fd" and name != "fd")
+    compas_text = ask(lambda client: client.call_tool("command", {"name": "mcp_brg_fd_compas"})).content[0].text
+    assert all("mcp_brg_{}".format(name) in compas_text for name in COMMANDS if name.startswith("fd_compas_"))
 
 
-@pytest.mark.parametrize("name", ["fd_exercises", "fd_answers", "fd_extensions"])
+@pytest.mark.parametrize("name", ["fd_exercises", "fd_extensions"])
 def test_page_lists_the_notebooks_of_its_folder(name):
     text = ask(lambda client: client.call_tool("command", {"name": name})).content[0].text
     notebooks = notebooks_of(COMMANDS[name])
@@ -58,7 +61,8 @@ def test_prompt_and_tool_reply_the_same(typed):
 @pytest.mark.parametrize("typed", ["mcp_brg", "/mcp_brg", "nothing"])
 def test_mcp_brg_lists_the_commands(typed):
     tool = ask(lambda client: client.call_tool("command", {"name": typed}))
-    assert all("mcp_brg_{}".format(name) in tool.content[0].text for name in COMMANDS)
+    text = tool.content[0].text
+    assert all("- `mcp_brg_{}`".format(name) in text for name in COMMANDS)
 
 
 @pytest.mark.parametrize("name", sorted(COMMANDS))
@@ -67,17 +71,9 @@ def test_every_command_named_in_a_text_exists(name):
         assert named in COMMANDS
 
 
-@pytest.mark.parametrize("name", ["compas_fd_hypar", "compas_fd_selfweight"])
-@pytest.mark.parametrize("editor", [None, "vscode"])
-def test_code_is_shown_in_a_terminal_and_written_in_an_editor(monkeypatch, editor, name):
-    from brg_mcp.server import reply
-
-    monkeypatch.delenv("CLAUDE_CODE_ENTRYPOINT", raising=False)
-    monkeypatch.delenv("TERMINAL_EMULATOR", raising=False)
-    if editor:
-        monkeypatch.setenv("TERM_PROGRAM", editor)
-    else:
-        monkeypatch.delenv("TERM_PROGRAM", raising=False)
+@pytest.mark.parametrize("name", [cmd for cmd in sorted(COMMANDS) if "```python" in COMMANDS[cmd].read_text(encoding="utf-8")])
+def test_python_examples_include_viewer_and_offer_to_run(name):
     text = reply(name)
-    assert "{}.py".format(name.replace("compas_", "")) in text
-    assert text.startswith("Write each Python example") == bool(editor)
+    assert "from compas_viewer import Viewer" in text
+    assert "viewer.show()" in text
+    assert "save and run the Python script" in text
