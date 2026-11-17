@@ -46,38 +46,58 @@ A person can be both. A student who starts to code installs the skill as well.
 
 ### Install for learners
 
-One step: add the hosted MCP server to your own account. Nothing else.
-
-**In a chat app (Claude, ChatGPT, on web or phone).** Add it as a custom connector:
+**In a chat app (Claude, ChatGPT, on web or phone).** Add the hosted MCP server as a custom connector:
 
 ```text
 https://<to be decided>/mcp
 ```
 
-**In Antigravity.** Add the server to `~/.gemini/config/mcp_config.json`.
+**In Antigravity (Desktop App, IDE, CLI).**
 
-Hosted:
+1. Install [uv](https://docs.astral.sh/uv/) once.
+2. Add `brg` to `~/.gemini/config/mcp_config.json`:
 
-```json
-{
-  "mcpServers": {
-    "brg": { "serverUrl": "https://<to be decided>/mcp" }
-  }
-}
-```
+   - From GitHub (no clone needed):
+     ```json
+     {
+       "mcpServers": {
+         "brg": {
+           "command": "uvx",
+           "args": [
+             "--from",
+             "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server",
+             "brg-mcp"
+           ]
+         }
+       }
+     }
+     ```
+   - From a local clone:
+     ```json
+     {
+       "mcpServers": {
+         "brg": {
+           "command": "uv",
+           "args": ["--directory", "/path/to/brg_framework/server", "run", "brg-mcp"]
+         }
+       }
+     }
+     ```
+3. Restart Antigravity.
+4. Type `mcp_brg` or `mcp_brg_fd` in chat. On the first prompt, select **Yes, and always allow** (or allow `mcp(brg/*)` in **Settings → Permission Grants**).
 
-Local, only for developing the server (needs [uv](https://docs.astral.sh/uv/) and a clone of this repository):
+**In Claude Code, Codex, Cursor, Claude Desktop.**
 
-```json
-{
-  "mcpServers": {
-    "brg": {
-      "command": "uv",
-      "args": ["--directory", "/path/to/brg_framework/server", "run", "brg-mcp"]
-    }
-  }
-}
-```
+- **Claude Code**:
+  ```bash
+  claude mcp add --transport stdio --scope user brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp
+  ```
+  *(Local clone: `claude mcp add --transport stdio --scope user brg -- uv --directory /path/to/brg_framework/server run brg-mcp`)*
+- **Codex**:
+  ```bash
+  codex mcp add brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp
+  ```
+- **Cursor, Claude Desktop**: Add the same `"mcpServers"` JSON block above to your MCP config file and restart.
 
 Then ask in plain words, for example "explain the force density method" or "show the hypar example". The answer is the BRG text itself, shown in the chat.
 
@@ -113,6 +133,22 @@ brg hooks install
 ```
 
 Coders do not need the MCP server. They can add it too if they want the teaching material in the same session.
+
+### Install GitHub CLI (`gh`)
+
+To clone repositories and check out pull requests with `gh`:
+
+| OS | Command |
+|---|---|
+| **Windows** | `winget install --id GitHub.cli` |
+| **macOS** | `brew install gh` |
+| **Ubuntu** | `sudo apt update && sudo apt install gh` |
+
+Log in once:
+
+```bash
+gh auth login
+```
 
 ### What each user gets
 

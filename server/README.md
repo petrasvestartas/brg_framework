@@ -17,14 +17,42 @@ tests/                             start the server, check what it offers and wh
 
 ## Connect a chatbot
 
-Install [uv](https://docs.astral.sh/uv/) once. Replace `/path/to/brg_framework/server` with the path of the `server` folder.
-The server is the same for every chatbot; only where each one stores the connection differs.
+Install [uv](https://docs.astral.sh/uv/) once.
+
+### Directly from GitHub (no clone needed)
+
+| Chatbot | Connect |
+|---|---|
+| Claude Code | `claude mcp add --transport stdio --scope user brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp` |
+| Codex | `codex mcp add brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp` |
+| Antigravity | Add the block below to `~/.gemini/config/mcp_config.json`, restart, and pick **Yes, and always allow** on first run |
+| Cursor, Claude Desktop | Add the block below to your MCP configuration file |
+
+```json
+{
+  "mcpServers": {
+    "brg": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server",
+        "brg-mcp"
+      ]
+    }
+  }
+}
+```
+
+### From a local clone
+
+Replace `/path/to/brg_framework/server` with the path of the cloned `server` folder.
 
 | Chatbot | Connect |
 |---|---|
 | Claude Code | `claude mcp add --transport stdio --scope user brg -- uv --directory /path/to/brg_framework/server run brg-mcp` |
 | Codex | `codex mcp add brg -- uv --directory /path/to/brg_framework/server run brg-mcp` |
-| Antigravity | add the block below to `~/.gemini/config/mcp_config.json` |
+| Antigravity | Add the block below to `~/.gemini/config/mcp_config.json`, restart, and pick **Yes, and always allow** on first run |
+| Cursor, Claude Desktop | Add the block below to your MCP configuration file |
 
 ```json
 {
