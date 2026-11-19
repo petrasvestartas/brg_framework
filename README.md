@@ -38,20 +38,6 @@ brg_framework/
 - **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
 - **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
 
-
-## What belongs where
-
-| Content | Home |
-| --- | --- |
-| Method theory: derivations, assumptions, limits, glossary, papers | `brg_framework` |
-| Teaching: exercises, notebooks, slides | `brg_framework` |
-| Catalog: package names, repositories, docs | `brg_framework` |
-| Method-choice skill | `brg_framework` |
-| MCP server | `brg_framework`, in `server/` |
-| Everything about one package: code, docs, examples, tests, its own skill if any | the package |
-
-No package imports `brg_framework`. It is content, not a runtime dependency.
-
 ## Users
 
 | Who | How they get it | Folder |
