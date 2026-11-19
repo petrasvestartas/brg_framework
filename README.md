@@ -27,7 +27,7 @@ brg_framework/
 
 ## The rules
 
-1. **One source.** Knowledge is Markdown in git. Website pages and server replies read it directly. Nothing is edited twice.
+1. **One source.** Knowledge is Markdown files.
 2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
 3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
 4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
