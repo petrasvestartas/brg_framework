@@ -27,17 +27,16 @@ brg_framework/
 
 ## The rules
 
-1. **Pointers.** This repository does not describe how to use each package. It only says which package to use and where it is.
+- **Links.** This repository does not describe how to use each package. It only says which package to use and where it is.
     - The `brg-methods` skill picks the package and gives its repository and docs.
     - If the package ships its own skill or `AGENTS.md`, the agent follows it.
     - If not, the agent reads the package itself: README, docs, examples, tests and the docstrings of the installed version.
     - What a package ships is up to its developers.
-1. **One source.** Knowledge is Markdown files to be available to chatbots.
-2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
-3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
-4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
-5. **One MCP server.** For learners it returns the full BRG text.
-6. **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
+- **One source.** Knowledge is Markdown files to be available to chatbots.
+- **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
+- **One MCP server.** For learners it returns the full BRG text.
+- **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
+- **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
 
 
 ## What belongs where
