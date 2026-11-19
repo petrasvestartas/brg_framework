@@ -32,7 +32,7 @@ brg_framework/
     - If the package ships its own skill or `AGENTS.md`, the agent follows it.
     - If not, the agent reads the package itself: README, docs, examples, tests and the docstrings of the installed version.
     - What a package ships is up to its developers.
-1. **One source.** Knowledge is Markdown files.
+1. **One source.** Knowledge is Markdown files to be available to chatbots.
 2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
 3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
 4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
