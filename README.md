@@ -2,6 +2,29 @@
 
 Shared knowledge for the Block Research Group Python packages: theory, teaching material, and links to the packages. Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and pointers to the individual BRG packages.
 
+## Layout of this repository
+
+```text
+brg_framework/
+├── AGENTS.md                  # for people and agents editing this repository
+├── theory/
+│   ├── fd/                    # force density
+│   │   ├── index.md           # what, when, assumptions, limits
+│   │   ├── formulation.md     # equations with stable ids
+│   │   ├── glossary.md
+│   │   ├── references.md
+│   │   └── teaching/          # exercises, notebooks, slides
+│   └── tna/ ...
+├── catalog/
+│   ├── packages.toml          # package names, repositories, docs
+│   └── methods.md             # method to package table
+├── skills/
+│   └── brg-methods/SKILL.md   # which method, which package, where it is
+├── server/                    # the MCP server (FastMCP)
+├── evals/                     # tasks, checkers, runner
+└── README.md                  # installation
+```
+
 | Who | How they get it | Folder |
 | --- | --- | --- |
 | Coders using Claude Code, Codex, Kimi Code or Antigravity | The `brg-methods` skill, which points to the right package | `skills/` |
@@ -108,28 +131,6 @@ gh auth login
 
 No package imports `brg_framework`. It is content, not a runtime dependency.
 
-## Layout of this repository
-
-```text
-brg_framework/
-├── AGENTS.md                  # for people and agents editing this repository
-├── theory/
-│   ├── fd/                    # force density
-│   │   ├── index.md           # what, when, assumptions, limits
-│   │   ├── formulation.md     # equations with stable ids
-│   │   ├── glossary.md
-│   │   ├── references.md
-│   │   └── teaching/          # exercises, notebooks, slides
-│   └── tna/ ...
-├── catalog/
-│   ├── packages.toml          # package names, repositories, docs
-│   └── methods.md             # method to package table
-├── skills/
-│   └── brg-methods/SKILL.md   # which method, which package, where it is
-├── server/                    # the MCP server (FastMCP)
-├── evals/                     # tasks, checkers, runner
-└── README.md                  # installation
-```
 
 ## MCP server
 
