@@ -4,25 +4,17 @@ Shared knowledge for the Block Research Group packages: [compas_fd](https://gith
 
 ## Install
 
-One package for everything BRG, like `compas_framework` for COMPAS:
-
 ```bash
-pip install "git+https://github.com/petrasvestartas/brg_framework.git"
-brg install
+pip install brg_framework
 ```
 
-1. `pip install` installs [`compas_framework`](https://github.com/compas-dev/compas_framework) first (`compas`, `compas_viewer`, `compas_cgal`, `compas_gmsh`, `compas_libigl`, `compas_model`, `compas_session`, `compas_shapeop`), then the BRG packages: `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags`.
-2. `brg install` copies the `brg-methods` skill into Claude Code (`~/.claude/skills`) and the other agents (`~/.agents/skills`), and prints the MCP server address.
-
-Other commands:
+## Commands
 
 ```bash
+brg install                 # add the BRG skill to your coding agents
 brg examples                # list the BRG examples
-brg copy tna_cross_vault    # write tna_cross_vault.py into the current folder
-brg version                 # the installed BRG packages
+brg copy tna_cross_vault    # save an example as a .py file
 ```
-
-Once it is on PyPI: `pip install brg_framework`.
 
 ## Layout of this repository
 
