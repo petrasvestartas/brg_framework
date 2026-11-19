@@ -6,7 +6,7 @@ Shared knowledge for the Block Research Group Python packages: theory, teaching 
 | --- | --- | --- |
 | Coders using Claude Code, Codex, Kimi Code or Antigravity | The `brg-methods` skill, which points to the right package | `skills/` |
 | Students and anyone learning in a chat app | Hosted MCP server, each student adds it once to their own account | `server/` |
-| Everyone else | Website | [brg](https://brg.ethz.ch/) |
+| Everyone else | Website | [brg.ethz.ch](https://brg.ethz.ch/) |
 
 ## Installation Users - MCP
 
