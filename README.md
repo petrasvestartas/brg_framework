@@ -161,18 +161,6 @@ brg_framework/
     └── scripts/copy_example.py
 ```
 
-## Migration from mcp-server-brg
-
-- [ ] Delete the `greet` tool.
-- [ ] Keep showing the full page text in chat for learners. Drop the word-for-word instruction only for the editor mode.
-- [ ] Remove editor detection and the write, install and run instruction.
-- [ ] List topics, not pages, in the server instructions.
-- [x] Keep all compas_fd examples in one place and remove the duplicate.
-- [x] Add the `brg-methods` skill.
-- [ ] Host the server at a web address.
-- [ ] Run every Python example in CI against a pinned package version.
-- [ ] Measure before going further (below).
-
 ## Measure first
 
 Compare setups on the same tasks: package only, the server, the skill, the skill and the server. Record input, cached and output tokens, model calls, wall time, and pass or fail. Judge correctness first, then tokens, then time. No saving is claimed until these numbers exist.
