@@ -59,49 +59,6 @@ The content is the same for both. Only the door differs.
 
 A person can be both. A student who starts to code installs the skill as well.
 
-### Install for learners
-
-Add one address to your app as an MCP server or custom connector:
-
-```text
-https://brg-mcp.fastmcp.app/mcp
-```
-
-Then type `mcp_brg` in a new chat. Steps for each app (Claude, Claude Code, ChatGPT, Codex, Antigravity, Gemini CLI, Cursor, Kimi Code): [server/INSTALL.md](server/INSTALL.md).
-
-### Install for coders
-
-Inside the project where you write code.
-
-1. Install the package you need. For Python and COMPAS itself, follow the [COMPAS installation guide](https://compas.dev) first.
-
-```bash
-pip install compas_fd
-```
-
-2. Install the `brg-methods` skill from this repository:
-
-```bash
-npx skills add BlockResearchGroup/brg_framework
-```
-
-Or copy `skills/brg-methods/` by hand:
-
-| Agent app | Copy into |
-| --- | --- |
-| Claude Code | `.claude/skills/` |
-| Codex, Kimi Code, Antigravity | `.agents/skills/` |
-
-3. If the package has its own skill, add it too: `npx skills add BlockResearchGroup/compas_fd`.
-
-Optional, for fast copying of examples:
-
-```bash
-brg hooks install
-```
-
-Coders do not need the MCP server. They can add it too if they want the teaching material in the same session.
-
 ### Install GitHub CLI (`gh`)
 
 To clone repositories and check out pull requests with `gh`:
@@ -171,7 +128,7 @@ brg_framework/
 │   └── brg-methods/SKILL.md   # which method, which package, where it is
 ├── server/                    # the MCP server (FastMCP)
 ├── evals/                     # tasks, checkers, runner
-└── mkdocs.yml                 # website built from theory/
+└── README.md                  # installation
 ```
 
 ## MCP server
