@@ -1,6 +1,6 @@
 # brg_framework
 
-Shared knowledge for the Block Research Group Python packages: theory, teaching material, and links to the packages. Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and pointers to the individual BRG packages.
+Shared knowledge for the Block Research Group Python packages. Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and pointers to the individual BRG packages.
 
 ## Layout of this repository
 
