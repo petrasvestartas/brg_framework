@@ -1,6 +1,6 @@
 # brg_framework
 
-Shared knowledge for the Block Research Group packages: 
+Shared knowledge for the Block Research Group packages and LLMs for devs and users: 
 - [compas_fd](https://github.com/BlockResearchGroup/compas_fd)
 - [compas_dr](https://github.com/BlockResearchGroup/compas_dr)
 - [compas_tna](https://github.com/BlockResearchGroup/compas_tna)
