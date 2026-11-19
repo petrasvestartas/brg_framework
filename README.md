@@ -40,13 +40,7 @@ brg_framework/
 
 ## Users
 
-| Who | How they get it | Folder |
-| --- | --- | --- |
-| Coders | The `brg-methods` skill, which points to the right package | `skills/` |
-| Students | Hosted MCP server, each student adds it once to their own account | `server/` |
-| Everyone else | Website | [brg.ethz.ch](https://brg.ethz.ch/) |
-
-| | Learners | Coders |
+| | Learners `skills/` | Coders `server/` |
 | --- | --- | --- |
 | Who | Students and others who want to read theory, see examples and do exercises. They do not write a project | People writing Python with BRG packages |
 | What they ask | "Explain force density." "Show me a hypar example." "Give me exercise 2." | "Form-find this net with compas_fd." "Why does my solver fail?" |
