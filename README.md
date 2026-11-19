@@ -6,10 +6,11 @@ Shared knowledge for the Block Research Group Python packages: theory, teaching 
 
 #### Claude
 
-Click your name (bottom left) → Settings → Connectors. On some versions it's the left menu → Plugins.
-Click Add → Add custom connector. Don't use the search box.
-Name: BRG. URL: https://brg-mcp.fastmcp.app/mcp. Leave the OAuth fields empty, then click Add.
-Start a new chat and type mcp_brg. You should see the "BRG methods" menu.
+- Click your name (bottom left) → Settings → Connectors. On some versions it's the left menu → Plugins.
+- Click Add → Add custom connector.
+- Name: BRG. URL: **https://brg-mcp.fastmcp.app/mcp**. Leave the OAuth fields empty, then click Add.
+- Start a new chat and type mcp_brg.
+- You should see the "BRG methods" menu.
 
 
 ## Installation Devs - Skills
