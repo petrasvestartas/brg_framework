@@ -27,12 +27,18 @@ brg_framework/
 
 ## The rules
 
+1. **Pointers.** This repository does not describe how to use each package. It only says which package to use and where it is.
+    - The `brg-methods` skill picks the package and gives its repository and docs.
+    - If the package ships its own skill or `AGENTS.md`, the agent follows it.
+    - If not, the agent reads the package itself: README, docs, examples, tests and the docstrings of the installed version.
+    - What a package ships is up to its developers.
 1. **One source.** Knowledge is Markdown files.
 2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
 3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
 4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
 5. **One MCP server.** For learners it returns the full BRG text.
 6. **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
+
 
 ## What belongs where
 
@@ -90,33 +96,6 @@ npx skills add petrasvestartas/brg_framework -g
 
 
 
-## How an agent uses a package
-
-This repository does not describe how to use each package. It only says which package to use and where it is.
-
-1. The `brg-methods` skill picks the package and gives its repository and docs.
-2. If the package ships its own skill or `AGENTS.md`, the agent follows it.
-3. If not, the agent reads the package itself: README, docs, examples, tests and the docstrings of the installed version.
-
-What a package ships is up to its developers.
-
-### Install GitHub CLI (`gh`)
-
-To clone repositories and check out pull requests with `gh`:
-
-| OS | Command |
-|---|---|
-| **Windows** | `winget install --id GitHub.cli` |
-| **macOS** | `brew install gh` |
-| **Ubuntu** | `sudo apt update && sudo apt install gh` |
-
-Log in once:
-
-```bash
-gh auth login
-```
-
-
 
 
 
@@ -164,16 +143,6 @@ brg_framework/
 ## Measure first
 
 Compare setups on the same tasks: package only, the server, the skill, the skill and the server. Record input, cached and output tokens, model calls, wall time, and pass or fail. Judge correctness first, then tokens, then time. No saving is claimed until these numbers exist.
-
-## Decisions
-
-| Question | Decision |
-| --- | --- |
-| Does teaching need the page text in chat, or is a link enough? | The text. Learners get the answer in the chat, not a link |
-| Is the server hosted, or run by each user? | Hosted. Each student adds it to their own account |
-| Who writes package skills? | Each package's developers, if they want. This repository only links. Without a skill, the agent reads the package repository |
-| Where is Python and COMPAS installation explained? | In [COMPAS](https://compas.dev). This repository only covers the BRG layer |
-| Which packages are covered? | The list in `catalog/packages.toml`. More are added there over time |
 
 ## References
 
