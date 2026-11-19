@@ -49,60 +49,13 @@ A person can be both. A student who starts to code installs the skill as well.
 
 ### Install for learners
 
-**In a chat app (Claude, ChatGPT, on web or phone).** Add the hosted MCP server as a custom connector:
+Add one address to your app as an MCP server or custom connector:
 
 ```text
-https://<to be decided>/mcp
+https://brg-mcp.fastmcp.app/mcp
 ```
 
-**In Antigravity (Desktop App, IDE, CLI).**
-
-1. Install [uv](https://docs.astral.sh/uv/) once.
-2. Add `brg` to `~/.gemini/config/mcp_config.json`:
-
-   - From GitHub (no clone needed):
-     ```json
-     {
-       "mcpServers": {
-         "brg": {
-           "command": "uvx",
-           "args": [
-             "--from",
-             "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server",
-             "brg-mcp"
-           ]
-         }
-       }
-     }
-     ```
-   - From a local clone:
-     ```json
-     {
-       "mcpServers": {
-         "brg": {
-           "command": "uv",
-           "args": ["--directory", "/path/to/brg_framework/server", "run", "brg-mcp"]
-         }
-       }
-     }
-     ```
-3. Restart Antigravity.
-4. Type `mcp_brg` or `mcp_brg_fd` in chat. On the first prompt, select **Yes, and always allow** (or allow `mcp(brg/*)` in **Settings → Permission Grants**).
-
-**In Claude Code, Codex, Cursor, Claude Desktop.**
-
-- **Claude Code**:
-  ```bash
-  claude mcp add --transport stdio --scope user brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp
-  ```
-  *(Local clone: `claude mcp add --transport stdio --scope user brg -- uv --directory /path/to/brg_framework/server run brg-mcp`)*
-- **Codex**:
-  ```bash
-  codex mcp add brg -- uvx --from "git+https://github.com/BlockResearchGroup/brg_framework.git#subdirectory=server" brg-mcp
-  ```
-- **Cursor, Claude Desktop**: Add the same `"mcpServers"` JSON block above to your MCP config file and restart.
-
-Then ask in plain words, for example "explain the force density method" or "show the hypar example". The answer is the BRG text itself, shown in the chat.
+Then type `mcp_brg` in a new chat. Steps for each app (Claude, Claude Code, ChatGPT, Codex, Antigravity, Gemini CLI, Cursor, Kimi Code): [server/INSTALL.md](server/INSTALL.md).
 
 ### Install for coders
 
