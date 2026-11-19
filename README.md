@@ -10,9 +10,9 @@ Shared knowledge for the Block Research Group packages:
 
 LLMs (Claude, Codex, Antigravity, Kimi, Mistral):
 - AGENTS.md - entry point
-- theory - text context about solvers
 - skills - for devs
 - server - for users/students
+- theory - text context about solvers (vector db, rag, links to papers, books)
 - evals - evaluation of the LLM interface
 
 ## Install
