@@ -2,6 +2,12 @@
 
 Shared knowledge for the Block Research Group Python packages: theory, teaching material, and links to the packages. Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and pointers to the individual BRG packages.
 
+| Who | How they get it | Folder |
+| --- | --- | --- |
+| Coders using Claude Code, Codex, Kimi Code or Antigravity | The `brg-methods` skill, which points to the right package | `skills/` |
+| Students and anyone learning in a chat app | Hosted MCP server, each student adds it once to their own account | `server/` |
+| Everyone else | Website | [brg](https://brg.ethz.ch/) |
+
 ## Installation Users - MCP
 
 #### Claude
@@ -26,15 +32,8 @@ npx skills add petrasvestartas/brg_framework -g -y -a claude-code
 npx skills add petrasvestartas/brg_framework -g
 ```
 
-## In one line
 
-This repository holds the theory and links to the packages. The packages do the work.
 
-| Who | How they get it | Folder |
-| --- | --- | --- |
-| Coders using Claude Code, Codex, Kimi Code or Antigravity | The `brg-methods` skill, which points to the right package | `skills/` |
-| Students and anyone learning in a chat app | Hosted MCP server, each student adds it once to their own account | `server/` |
-| Everyone else | Website | `theory/`, built with `mkdocs.yml` |
 
 ## How an agent uses a package
 
