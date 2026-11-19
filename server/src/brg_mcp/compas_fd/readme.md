@@ -4,6 +4,6 @@
 
 - Code: https://github.com/BlockResearchGroup/compas_fd
 - Documentation: https://blockresearchgroup.github.io/compas_fd
-- Examples: https://github.com/BlockResearchGroup/compas_fd/tree/main/tests
-- All twelve COMPAS Python examples: `mcp_brg_fd_compas`
+- Examples: https://github.com/BlockResearchGroup/compas_fd/tree/main/docs/examples
+- All fifteen COMPAS Python examples: `mcp_brg_fd_compas`
 - Force density method: `mcp_brg_fd`

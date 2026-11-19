@@ -1,8 +1,8 @@
-Hypar, fd_hypar.py: one free node between four supports, solved with fd_numpy.
+Hypar, fd_hypar.py: one free node between four supports.
 
 Source: https://github.com/BlockResearchGroup/compas_fd/blob/main/tests/test_hypar.py
 
-Tested with `compas 2.15.1`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
+Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
 """Force density: one free node hangs between four supports at the corners of a hypar."""

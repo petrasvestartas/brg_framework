@@ -253,7 +253,7 @@ brg_framework/
 - [ ] Keep showing the full page text in chat for learners. Drop the word-for-word instruction only for the editor mode.
 - [ ] Remove editor detection and the write, install and run instruction.
 - [ ] List topics, not pages, in the server instructions.
-- [ ] Keep all twelve compas_fd examples in one place and remove the duplicate.
+- [x] Keep all compas_fd examples in one place and remove the duplicate.
 - [x] Add the `brg-methods` skill.
 - [ ] Host the server at a web address.
 - [ ] Run every Python example in CI against a pinned package version.
