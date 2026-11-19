@@ -6,23 +6,35 @@ Shared knowledge for the Block Research Group Python packages. Installing Python
 
 ```text
 brg_framework/
-├── AGENTS.md                  # for people and agents editing this repository
-├── theory/
-│   ├── fd/                    # force density
-│   │   ├── index.md           # what, when, assumptions, limits
-│   │   ├── formulation.md     # equations with stable ids
-│   │   ├── glossary.md
-│   │   ├── references.md
-│   │   └── teaching/          # exercises, notebooks, slides
-│   └── tna/ ...
+├── AGENTS.md                      # for people and agents editing this repository
+├── README.md                      # this file
+├── theory/                        # one folder per method: fd, dr, tna, tno, dem, ags
+│   └── fd/
+│       ├── index.md               # what, when, assumptions, limits
+│       ├── formulation.md         # equations with stable ids
+│       ├── glossary.md
+│       ├── references.md
+│       └── teaching/              # exercises, notebooks, slides
 ├── catalog/
-│   ├── packages.toml          # package names, repositories, docs
-│   └── methods.md             # method to package table
+│   ├── packages.toml              # package names, repositories, docs
+│   └── methods.md                 # method to package table
 ├── skills/
-│   └── brg-methods/SKILL.md   # which method, which package, where it is
-├── server/                    # the MCP server (FastMCP)
-├── evals/                     # tasks, checkers, runner
-└── README.md                  # installation
+│   └── brg-methods/
+│       ├── SKILL.md               # which method, which package, where it is
+│       └── scripts/
+│           └── copy_example.py    # copies a BRG example as a .py file
+├── server/                        # the MCP server (FastMCP)
+│   ├── INSTALL.md                 # add the server to each app
+│   ├── pyproject.toml
+│   ├── src/brg_mcp/
+│   │   ├── server.py              # every .md page below is one command
+│   │   ├── teaching.py            # brg-publish: notebooks to the teaching website
+│   │   ├── fd/                    # force density pages and examples
+│   │   ├── tna/                   # thrust network analysis pages and examples
+│   │   ├── compas_fd/
+│   │   └── compas_tna/
+│   └── tests/
+└── evals/                         # tasks and results, still empty
 ```
 
 ## The rules
@@ -46,7 +58,7 @@ brg_framework/
 | What they ask | "Explain force density." "Show me a hypar example." "Give me exercise 2." | "Form-find this net with compas_fd." "Why does my solver fail?" |
 | Door | The MCP server | The `brg-methods` skill, then the package |
 | Why | Nothing to install. Always the newest text. The full answer appears in the chat, not a link | Works with the installed package version. The agent reads only what it needs |
-| Extras | Links to notebooks on the teaching website | Optional hooks that copy examples as files |
+| Extras | Links to notebooks on the teaching website | A script that copies examples as files |
 
 ## Installation Users - MCP
 
@@ -90,34 +102,14 @@ npx skills add petrasvestartas/brg_framework -g
 
 Goal: copy code as it is, without the model retyping it. A script that copies a file costs almost no tokens and no waiting.
 
-Two layers, one script:
+**Script (works now).** `skills/brg-methods/scripts/copy_example.py` copies a BRG example into the current folder. Only the Python standard library. It installs with the skill, and the skill tells the agent to run it.
 
-1. **Script in the skill (works everywhere).** `skills/brg-methods/scripts/copy_example.py` copies an example file from a package into the project. The skill text tells the agent to run it. Scripts are part of the Agent Skills standard, so this works in all four agent apps with no setup.
-2. **Hook (optional, faster).** The agent app runs the same script by itself at a fixed moment, without a model call.
-
-Rules that keep hooks compatible with all four agent apps:
-
-- **One script does the work**: `hooks/brg_hook.py`. No logic lives in a config file.
-- **Only the four shared events**: `SessionStart`, `PreToolUse`, `PostToolUse`, `Stop`.
-- **The script reads JSON from stdin and accepts both spellings** of each field (`tool_name` and `toolName`), because the agent apps differ.
-- **Four small config files call that one script.** `brg hooks install` writes them.
-- **Nothing depends on a hook.** Everything a hook does must also be reachable through the skill script.
-
-| Agent app | Hook config written by the installer |
-| --- | --- |
-| Claude Code | `.claude/settings.json` |
-| Codex | `.codex/hooks.json` (the user must review and trust it once) |
-| Antigravity | `.agents/hooks.json` |
-| Kimi Code | `[[hooks]]` in the user's `~/.kimi-code/config.toml`; it has no project-level hook file |
-
-```text
-brg_framework/
-├── hooks/
-│   ├── brg_hook.py            # the one script
-│   └── install.py             # writes the four config files
-└── skills/brg-methods/
-    └── scripts/copy_example.py
+```bash
+python copy_example.py                    # list the examples
+python copy_example.py tna_cross_vault    # write tna_cross_vault.py
 ```
+
+**Hooks (planned, not built).** The agent app would run the same script by itself, without a model call. Build them only if the measurements below show they save something.
 
 ## Measure first
 

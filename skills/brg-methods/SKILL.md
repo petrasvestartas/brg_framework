@@ -27,6 +27,9 @@ Pick the package from the table. Then let the package do the work. Do not solve 
 3. If the package ships its own skill or an `AGENTS.md`, follow it.
 4. If not, read the package: its README, `docs/examples/`, `tests/`, and `help()` on the installed names. Trust the installed version over anything you remember.
 5. Use the package's own examples as the starting point.
+6. For a BRG example (force density or thrust network analysis), copy the file instead of typing it:
+   `python <this skill folder>/scripts/copy_example.py` lists the examples,
+   `python <this skill folder>/scripts/copy_example.py tna_cross_vault` writes `tna_cross_vault.py` into the current folder.
 
 ## Theory
 
