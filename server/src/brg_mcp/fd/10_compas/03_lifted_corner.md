@@ -5,8 +5,6 @@ Source: https://github.com/BlockResearchGroup/compas_fd/blob/main/notebooks/00_b
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Force density: a 10 x 10 net on four corner supports, one corner lifted to a height of 7."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas_fd.solvers import fd_numpy

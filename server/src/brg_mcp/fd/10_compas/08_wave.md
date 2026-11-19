@@ -7,8 +7,6 @@ Same nodes as the session file `Wave.json` of the manual, to 1e-14.
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Wave: ridge and valley cables between ten anchors on two sides."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

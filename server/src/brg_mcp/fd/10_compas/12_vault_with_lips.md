@@ -5,8 +5,6 @@ Source: https://blockresearchgroup.gitbook.io/compas-fofin/examples-basic/compre
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Vault with Lips: a compression vault on four corners under a load, with lips along the edges."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

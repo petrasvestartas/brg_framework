@@ -5,8 +5,6 @@ Source: https://blockresearchgroup.gitbook.io/compas-fofin/examples-basic/compre
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Catenary Arch with Corrugations: the hanging cables inverted into a barrel vault with corrugations."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

@@ -11,8 +11,6 @@ The three middle edges that leave every support arch also get the bounds 1 to 3,
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: lips, a three legged vault whose open edges fold up into stiffening lips."""
-
 from math import cos
 from math import radians
 from math import sin

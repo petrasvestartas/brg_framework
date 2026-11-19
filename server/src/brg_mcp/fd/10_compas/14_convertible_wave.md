@@ -5,8 +5,6 @@ Source: https://blockresearchgroup.gitbook.io/compas-fofin/examples-advanced/lin
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Line Constraints: the ridge and valley wave as a convertible roof, its supports slide on two rails."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line

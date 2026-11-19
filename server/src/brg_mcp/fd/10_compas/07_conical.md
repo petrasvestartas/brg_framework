@@ -5,8 +5,6 @@ Source: https://blockresearchgroup.gitbook.io/compas-fofin/examples-basic/tensil
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Conical: a raised centre with a light eye, eight boundary anchors and edge cables."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line

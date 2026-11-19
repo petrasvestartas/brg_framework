@@ -7,8 +7,6 @@ Force densities of the session file `Ex_funicular_cables.json`. The selfweight i
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Catenary Cables: parallel cables hanging under their selfweight between two supported edges."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

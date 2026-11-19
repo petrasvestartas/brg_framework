@@ -7,8 +7,6 @@ The manual scales the edges interactively; here the edges along the length get q
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Arch Supported: half a cylinder between two anchored arches, with edge cables along the free edges."""
-
 from math import cos
 from math import pi
 from math import sin

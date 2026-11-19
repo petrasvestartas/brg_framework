@@ -5,8 +5,6 @@ Source: https://github.com/BlockResearchGroup/compas_fd/blob/main/tests/test_sel
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Selfweight: the load of every node of a 10 x 10 grid from its tributary area, then the net hanging under it."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas_fd.loads import SelfweightCalculator

@@ -7,8 +7,6 @@ The pattern of the Rhino file is rebuilt as 5 rings of 22 quads with the same ra
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a vault with a hole, on a ring of supports along its outer boundary."""
-
 from math import cos
 from math import radians
 from math import sin

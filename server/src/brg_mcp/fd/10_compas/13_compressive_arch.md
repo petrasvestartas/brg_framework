@@ -7,8 +7,6 @@ The arch is smooth only for q below about -5.1; here q = -5.5 gives an arch of 2
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Compressive Arch Supported: a cable net in tension carried by an internal arch in compression."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

@@ -7,8 +7,6 @@ Same pattern as Holes, rebuilt from the Rhino file with the same four extra supp
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a vault that drops down to four supports on the edge of its hole."""
-
 from math import cos
 from math import radians
 from math import sin

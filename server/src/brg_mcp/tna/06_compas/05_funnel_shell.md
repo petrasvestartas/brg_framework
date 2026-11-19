@@ -7,8 +7,6 @@ The manual page is marked as in progress: it lists the commands, its Rhino file 
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a funnel shell between a low inner ring and a raised outer ring of supports."""
-
 from math import cos
 from math import radians
 from math import sin

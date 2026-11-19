@@ -9,8 +9,6 @@ The manual page is marked as in progress: it lists the commands, its Rhino file 
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a fan vault, ribs that fan out from four corner supports."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line

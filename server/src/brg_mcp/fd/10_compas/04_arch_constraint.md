@@ -7,8 +7,6 @@ The original uses `NurbsCurve`, which needs a NURBS plugin; here the arch is a `
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Force density with constraints: the middle line of a net slides on an arch until it is in equilibrium."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Bezier

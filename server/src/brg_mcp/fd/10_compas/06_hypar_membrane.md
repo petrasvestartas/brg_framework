@@ -7,8 +7,6 @@ The manual does not give the height of the raised corners; here it is 5.
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Hypar: a four point sail with two raised corners and boundary cables."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Pointcloud

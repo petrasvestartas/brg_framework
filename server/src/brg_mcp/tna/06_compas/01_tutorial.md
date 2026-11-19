@@ -9,8 +9,6 @@ With 300 iterations the largest angle deviation is 3.4 degrees, below the 5 degr
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: the RhinoVAULT tutorial, a vault on four corner supports with open boundaries."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line

@@ -102,6 +102,7 @@ RUN = (
     "Reply with the full Markdown text below (keeping all headings, bullet lists, links, and the complete Python code block with `compas_viewer` intact). "
     "At the end, ask the user if they want you to save and run the Python script now. "
     "When the user confirms, write the Python code block to its named `.py` file in the current working folder, "
+    "exactly as shown: do not add docstrings, comments or any other text, "
     "ensure {names} are installed (if no active Python environment has them, install `uv` if missing, "
     "run `uv init --bare` and `uv add {packages}`), and run `uv run python <file>.py` so it prints the output "
     "and opens the 3D `compas_viewer` window.\n\n"

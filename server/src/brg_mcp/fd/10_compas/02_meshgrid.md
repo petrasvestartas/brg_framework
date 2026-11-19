@@ -5,8 +5,6 @@ Source: https://github.com/BlockResearchGroup/compas_fd/blob/main/docs/examples/
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Force density: a flat 10 x 10 net on four corner supports, with ten times stronger boundary cables."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Line

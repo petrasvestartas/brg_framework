@@ -7,8 +7,6 @@ The curves are the control points and knots of `texas_boundary_r7.3dm`.
 Tested with `compas 2.16.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""FormFinder Curve Constraints: a cable net whose boundary slides on four curves, the shell of Buda, Texas."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Point

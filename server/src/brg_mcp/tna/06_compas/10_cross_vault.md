@@ -7,8 +7,6 @@ Checked against the session file of the manual (`examples_cross_vault_6.json`): 
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a cross vault, four barrel vaults that meet on two diagonal ribs."""
-
 from compas.colors import Color
 from compas.datastructures import Mesh
 from compas.geometry import Translation

@@ -7,8 +7,6 @@ The pattern of the Rhino file is rebuilt with the same topology: a 6 by 6 grid w
 Tested with `compas 2.16.0`, `compas_tna 0.9.0`, `compas_fd 0.5.4`, `compas_viewer 2.0.2`.
 
 ```python
-"""Thrust network analysis: a pillow vault, a circular plan with every boundary vertex supported."""
-
 from math import cos
 from math import radians
 from math import sin
