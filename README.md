@@ -27,9 +27,17 @@ brg_framework/
 
 | Who | How they get it | Folder |
 | --- | --- | --- |
-| Coders using Claude Code, Codex, Kimi Code or Antigravity | The `brg-methods` skill, which points to the right package | `skills/` |
-| Students and anyone learning in a chat app | Hosted MCP server, each student adds it once to their own account | `server/` |
+| Coders | The `brg-methods` skill, which points to the right package | `skills/` |
+| Students | Hosted MCP server, each student adds it once to their own account | `server/` |
 | Everyone else | Website | [brg.ethz.ch](https://brg.ethz.ch/) |
+
+| | Learners | Coders |
+| --- | --- | --- |
+| Who | Students and others who want to read theory, see examples and do exercises. They do not write a project | People writing Python with BRG packages |
+| What they ask | "Explain force density." "Show me a hypar example." "Give me exercise 2." | "Form-find this net with compas_fd." "Why does my solver fail?" |
+| Door | The MCP server | The `brg-methods` skill, then the package |
+| Why | Nothing to install. Always the newest text. The full answer appears in the chat, not a link | Works with the installed package version. The agent reads only what it needs |
+| Extras | Links to notebooks on the teaching website | Optional hooks that copy examples as files |
 
 ## Installation Users - MCP
 
@@ -67,20 +75,6 @@ This repository does not describe how to use each package. It only says which pa
 3. If not, the agent reads the package itself: README, docs, examples, tests and the docstrings of the installed version.
 
 What a package ships is up to its developers.
-
-## Two kinds of users
-
-The content is the same for both. Only the door differs.
-
-| | Learners | Coders |
-| --- | --- | --- |
-| Who | Students and others who want to read theory, see examples and do exercises. They do not write a project | People writing Python with BRG packages |
-| What they ask | "Explain force density." "Show me a hypar example." "Give me exercise 2." | "Form-find this net with compas_fd." "Why does my solver fail?" |
-| Door | The MCP server | The `brg-methods` skill, then the package |
-| Why | Nothing to install. Always the newest text. The full answer appears in the chat, not a link | Works with the installed package version. The agent reads only what it needs |
-| Extras | Links to notebooks on the teaching website | Optional hooks that copy examples as files |
-
-A person can be both. A student who starts to code installs the skill as well.
 
 ### Install GitHub CLI (`gh`)
 
