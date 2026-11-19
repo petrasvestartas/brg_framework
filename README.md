@@ -4,13 +4,25 @@ Shared knowledge for the Block Research Group packages: [compas_fd](https://gith
 
 ## Install
 
-One command installs all BRG packages, with `compas` and `compas_viewer`:
+One package for everything BRG, like `compas_framework` for COMPAS:
 
 ```bash
 pip install "git+https://github.com/petrasvestartas/brg_framework.git"
+brg install
 ```
 
-Once it is on PyPI: `pip install brg_framework`. It has no code of its own, like `compas_framework` for COMPAS.
+1. `pip install` installs the BRG packages: `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags`, with `compas` and `compas_viewer`.
+2. `brg install` copies the `brg-methods` skill into Claude Code (`~/.claude/skills`) and the other agents (`~/.agents/skills`), and prints the MCP server address.
+
+Other commands:
+
+```bash
+brg examples                # list the BRG examples
+brg copy tna_cross_vault    # write tna_cross_vault.py into the current folder
+brg version                 # the installed BRG packages
+```
+
+Once it is on PyPI: `pip install brg_framework`.
 
 ## Layout of this repository
 
@@ -18,7 +30,14 @@ Once it is on PyPI: `pip install brg_framework`. It has no code of its own, like
 brg_framework/
 ├── AGENTS.md                      # for people and agents editing this repository
 ├── README.md                      # this file
-├── pyproject.toml                 # pip install brg_framework: all BRG packages, no code
+├── pyproject.toml                 # pip install brg_framework
+├── CHANGELOG.md
+├── LICENSE
+├── src/brg_framework/             # the package: version, list of BRG packages, the brg command
+│   ├── __init__.py
+│   └── cli.py
+├── tests/                         # tests of the package
+├── .github/workflows/             # build: checks on every push; release: PyPI on a v* tag
 ├── theory/                        # one folder per method: fd, dr, tna, tno, dem, ags
 │   └── fd/
 │       ├── index.md               # what, when, assumptions, limits

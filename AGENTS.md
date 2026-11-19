@@ -4,11 +4,12 @@ Guidance for people and agents editing this repository.
 
 ## What this repository is
 
-Content, not a library. No package imports it.
-The root `pyproject.toml` only installs the BRG packages. It has no code.
+Mostly content. No BRG package imports it.
+The package `brg_framework` (`src/`) installs the BRG packages and the command `brg`. It holds no theory and no examples: the skill comes from `skills/`, the examples from `server/`.
 
 | Folder | Content | Edited by hand |
 | --- | --- | --- |
+| `src/brg_framework/` | The package: version, list of BRG packages, the `brg` command | yes |
 | `theory/` | Method theory, one folder per method | yes |
 | `catalog/` | Packages and the method table | yes, for now |
 | `skills/` | `brg-methods`: which package, and links to it. No package skills | yes |
@@ -35,6 +36,10 @@ What the package itself ships is up to its developers.
 ## Checks
 
 ```bash
+uv sync --extra dev
+uv run ruff check .
+uv run pytest -q
+
 cd server
 uv sync --extra dev
 uv run ruff check .
