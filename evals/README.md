@@ -23,7 +23,7 @@ One file per task in `tasks/`. See `tasks/README.md` for the format.
 | T3 | Net with sliding supports on curves | Supports lie on their curves |
 | T4 | Thrust network for a vault | Form and force diagrams exist; equilibrium holds |
 | T5 | Explain why the method is linear and when it fails | Rubric of five facts |
-| T6 | Choose the package for a described problem | Matches `catalog/methods.md` |
+| T6 | Choose the package for a described problem | Matches the table in `skills/brg-methods/SKILL.md` |
 | T7 | A call that changed between two package versions | Passes on the installed version |
 | T8 | Unrelated Python task | Control |
 

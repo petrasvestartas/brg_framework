@@ -36,9 +36,6 @@ brg_framework/
 │       ├── glossary.md
 │       ├── references.md
 │       └── teaching/              # exercises, notebooks, slides
-├── catalog/
-│   ├── packages.toml              # package names, repositories, docs
-│   └── methods.md                 # method to package table
 ├── skills/
 │   └── brg-methods/
 │       ├── SKILL.md               # which method, which package, where it is

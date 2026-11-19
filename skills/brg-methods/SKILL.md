@@ -2,8 +2,6 @@
 name: brg-methods
 description: Chooses the right Block Research Group COMPAS package for a structural design task (form finding of nets and membranes, funicular vaults, masonry assessment, discrete element models, graphic statics) and points to its repository and docs. Use when the user describes a structural form finding or masonry problem, names a BRG package, or asks which BRG or COMPAS package to use.
 license: MIT
-metadata:
-  catalog: "2026-11-13"
 ---
 
 # Which BRG package

@@ -11,7 +11,6 @@ The package `brg_framework` (`src/`) installs the BRG packages and the command `
 | --- | --- | --- |
 | `src/brg_framework/` | The package: version, list of BRG packages, the `brg` command | yes |
 | `theory/` | Method theory, one folder per method | yes |
-| `catalog/` | Packages and the method table | yes, for now |
 | `skills/` | `brg-methods`: which package, and links to it. No package skills | yes |
 | `server/` | The MCP server | yes |
 | `evals/` | Tasks to measure tokens, time and correctness | yes |
@@ -27,9 +26,9 @@ The package `brg_framework` (`src/`) installs the BRG packages and the command `
 
 ## Adding a package
 
-1. Add a row to `catalog/packages.toml` and to `catalog/methods.md`.
-2. Add `theory/<method>/` with the four pages and `teaching/`.
-3. Add a row to the table in `skills/brg-methods/SKILL.md`, with the repository and docs links.
+1. Add it to `dependencies` in `pyproject.toml` and to `PACKAGES` in `src/brg_framework/__init__.py`.
+2. Add a row to the table in `skills/brg-methods/SKILL.md`, with the repository and docs links.
+3. Add `theory/<method>/` with the four pages and `teaching/`.
 
 What the package itself ships is up to its developers.
 
