@@ -2,13 +2,18 @@
 
 Shared knowledge for the Block Research Group Python packages: theory, teaching material, and links to the packages.
 
-Status: in progress. The server and the method-choice skill exist; theory and hooks are still to be written.
-
-This is the lab layer on top of COMPAS. Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and points to the individual BRG packages.
-
-## Goal
+Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and points to the individual BRG packages.
 
 Help people and coding agents (Claude Code, Codex, Kimi Code, Antigravity) find the right theory and the right BRG package.
+
+## Installation
+
+### Claude
+
+1. Click your name (bottom left) → Settings → Connectors. On some versions it's the left menu → Plugins.
+2. Click Add → Add custom connector. Don't use the search box.
+3. Name: BRG. URL: https://brg-mcp.fastmcp.app/mcp. Leave the OAuth fields empty, then click Add.
+4. Start a new chat and type mcp_brg. You should see the "BRG methods" menu.
 
 ## In one line
 
