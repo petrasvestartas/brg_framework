@@ -4,7 +4,7 @@ Shared knowledge for the Block Research Group Python packages: theory, teaching 
 
 Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and points to the individual BRG packages.
 
-## Installation
+## Installation MCP
 
 ### Claude
 
@@ -12,6 +12,12 @@ Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). 
 2. Click Add → Add custom connector. Don't use the search box.
 3. Name: BRG. URL: https://brg-mcp.fastmcp.app/mcp. Leave the OAuth fields empty, then click Add.
 4. Start a new chat and type mcp_brg. You should see the "BRG methods" menu.
+
+## Installation Skills
+
+```bash
+npx skills add petrasvestartas/brg_framework -g
+```
 
 ## In one line
 
