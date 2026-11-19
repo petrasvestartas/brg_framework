@@ -24,6 +24,29 @@ brg_framework/
 ├── evals/                     # tasks, checkers, runner
 └── README.md                  # installation
 ```
+
+## The rules
+
+1. **One source.** Knowledge is Markdown in git. Website pages and server replies read it directly. Nothing is edited twice.
+2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
+3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
+4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
+5. **One MCP server, with two tools at most.** For learners it returns the full BRG text, and the chat shows that text as the answer, not a link.
+6. **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
+
+## What belongs where
+
+| Content | Home |
+| --- | --- |
+| Method theory: derivations, assumptions, limits, glossary, papers | `brg_framework` |
+| Teaching: exercises, notebooks, slides | `brg_framework` |
+| Catalog: package names, repositories, docs | `brg_framework` |
+| Method-choice skill | `brg_framework` |
+| MCP server | `brg_framework`, in `server/` |
+| Everything about one package: code, docs, examples, tests, its own skill if any | the package |
+
+No package imports `brg_framework`. It is content, not a runtime dependency.
+
 ## Users
 
 | Who | How they get it | Folder |
@@ -93,38 +116,8 @@ Log in once:
 gh auth login
 ```
 
-### What each user gets
 
-| Content | Learners, through MCP | Coders, through the skill and the package |
-| --- | --- | --- |
-| Theory: explanation, assumptions, limits | yes | yes, from the website or the server |
-| Glossary and references | yes | yes, from the website or the server |
-| Exercises and notebooks | yes | no |
-| Which package to use, and where it is | yes | yes |
-| Examples | to read | from the package, copied as files |
-| API of the installed version | no | yes, read from the package |
 
-## The rules
-
-1. **One source.** Knowledge is Markdown in git. Website pages and server replies read it directly. Nothing is edited twice.
-2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
-3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
-4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
-5. **One MCP server, with two tools at most.** For learners it returns the full BRG text, and the chat shows that text as the answer, not a link.
-6. **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
-
-## What belongs where
-
-| Content | Home |
-| --- | --- |
-| Method theory: derivations, assumptions, limits, glossary, papers | `brg_framework` |
-| Teaching: exercises, notebooks, slides | `brg_framework` |
-| Catalog: package names, repositories, docs | `brg_framework` |
-| Method-choice skill | `brg_framework` |
-| MCP server | `brg_framework`, in `server/` |
-| Everything about one package: code, docs, examples, tests, its own skill if any | the package |
-
-No package imports `brg_framework`. It is content, not a runtime dependency.
 
 
 ## MCP server
