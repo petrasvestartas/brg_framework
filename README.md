@@ -7,7 +7,7 @@ Shared knowledge for the Block Research Group packages:
 - [compas_tno](https://github.com/BlockResearchGroup/compas_tno)
 - [compas_dem](https://github.com/BlockResearchGroup/compas_dem)
 - [compas_ags](https://github.com/BlockResearchGroup/compas_ags).
-
+- ...
 
 ## Install
 
