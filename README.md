@@ -6,7 +6,7 @@ Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). 
 
 ## Installation MCP
 
-### Claude
+#### Claude
 
 1. Click your name (bottom left) → Settings → Connectors. On some versions it's the left menu → Plugins.
 2. Click Add → Add custom connector. Don't use the search box.
@@ -15,6 +15,13 @@ Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). 
 
 ## Installation Skills
 
+
+#### Claude
+```bash
+npx skills add petrasvestartas/brg_framework -g -y -a claude-code
+```
+
+#### Codex
 ```bash
 npx skills add petrasvestartas/brg_framework -g
 ```
