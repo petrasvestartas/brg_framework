@@ -5,6 +5,7 @@ Guidance for people and agents editing this repository.
 ## What this repository is
 
 Content, not a library. No package imports it.
+The root `pyproject.toml` only installs the BRG packages. It has no code.
 
 | Folder | Content | Edited by hand |
 | --- | --- | --- |

@@ -2,12 +2,23 @@
 
 Shared knowledge for the Block Research Group packages: [compas_fd](https://github.com/BlockResearchGroup/compas_fd), [compas_dr](https://github.com/BlockResearchGroup/compas_dr), [compas_tna](https://github.com/BlockResearchGroup/compas_tna), [compas_tno](https://github.com/BlockResearchGroup/compas_tno), [compas_dem](https://github.com/BlockResearchGroup/compas_dem), and [compas_ags](https://github.com/BlockResearchGroup/compas_ags). Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and pointers to the individual BRG packages.
 
+## Install
+
+One command installs all BRG packages, with `compas` and `compas_viewer`:
+
+```bash
+pip install "git+https://github.com/petrasvestartas/brg_framework.git"
+```
+
+Once it is on PyPI: `pip install brg_framework`. It has no code of its own, like `compas_framework` for COMPAS.
+
 ## Layout of this repository
 
 ```text
 brg_framework/
 ├── AGENTS.md                      # for people and agents editing this repository
 ├── README.md                      # this file
+├── pyproject.toml                 # pip install brg_framework: all BRG packages, no code
 ├── theory/                        # one folder per method: fd, dr, tna, tno, dem, ags
 │   └── fd/
 │       ├── index.md               # what, when, assumptions, limits
