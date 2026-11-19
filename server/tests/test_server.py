@@ -36,6 +36,14 @@ def test_readme_lists_the_pages_of_its_folder():
     assert all("mcp_brg_{}".format(name) in compas_text for name in COMMANDS if name.startswith("fd_compas_"))
 
 
+def test_tna_lists_its_pages_and_examples():
+    text = ask(lambda client: client.call_tool("command", {"name": "mcp_brg_tna"})).content[0].text
+    assert all("mcp_brg_{}".format(name) in text for name in COMMANDS if COMMANDS[name].parent.name == "tna" and name != "tna")
+    examples = [name for name in COMMANDS if name.startswith("tna_compas_")]
+    compas_text = ask(lambda client: client.call_tool("command", {"name": "mcp_brg_tna_compas"})).content[0].text
+    assert len(examples) == 10 and all("mcp_brg_{}".format(name) in compas_text for name in examples)
+
+
 @pytest.mark.parametrize("name", ["fd_exercises", "fd_extensions"])
 def test_page_lists_the_notebooks_of_its_folder(name):
     text = ask(lambda client: client.call_tool("command", {"name": name})).content[0].text
@@ -59,10 +67,23 @@ def test_prompt_and_tool_reply_the_same(typed):
 
 
 @pytest.mark.parametrize("typed", ["mcp_brg", "/mcp_brg", "nothing"])
-def test_mcp_brg_lists_the_commands(typed):
+def test_mcp_brg_lists_the_methods_and_their_packages(typed):
     tool = ask(lambda client: client.call_tool("command", {"name": typed}))
     text = tool.content[0].text
-    assert all("- `mcp_brg_{}`".format(name) in text for name in COMMANDS)
+    assert "- `mcp_brg_fd`: Force density method, package `compas_fd` (`mcp_brg_compas_fd`)" in text
+    assert "- `mcp_brg_tna`: Thrust network analysis, package `compas_tna` (`mcp_brg_compas_tna`)" in text
+    assert "mcp_brg_fd_algorithm" not in text
+
+
+def test_every_command_is_reachable_from_the_menu():
+    menu = ask(lambda client: client.call_tool("command", {"name": "mcp_brg"})).content[0].text
+    seen, todo = set(), re.findall(r"mcp_brg_([a-z_]+)", menu)
+    while todo:
+        name = todo.pop()
+        if name not in seen:
+            seen.add(name)
+            todo += re.findall(r"mcp_brg_([a-z_]+)", reply(name))
+    assert seen == set(COMMANDS)
 
 
 @pytest.mark.parametrize("name", sorted(COMMANDS))
@@ -77,3 +98,5 @@ def test_python_examples_include_viewer_and_offer_to_run(name):
     assert "from compas_viewer import Viewer" in text
     assert "viewer.show()" in text
     assert "save and run the Python script" in text
+    package = "compas_tna" if name.startswith("tna") else "compas_fd"
+    assert "uv add {} compas_viewer".format(package) in text

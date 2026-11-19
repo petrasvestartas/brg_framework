@@ -11,6 +11,9 @@ src/brg_mcp/teaching.py            copies the notebooks to the teaching website 
 src/brg_mcp/fd/readme.md           the command fd (form finding, force density)
 src/brg_mcp/fd/01_algorithm.md     the command fd_algorithm (also applications, keywords, references, ...)
 src/brg_mcp/fd/07_exercises/       the notebooks of fd_exercises (08_answers/: of fd_answers)
+src/brg_mcp/tna/                   the command tna (thrust network analysis), same layout as fd/
+src/brg_mcp/tna/06_compas/         one page per RhinoVAULT example, each with one standalone Python script (tna_compas_<name>)
+src/brg_mcp/compas_fd/, compas_tna/  the package pages: links to code, documentation and examples
 .github/workflows/teaching.yml     publishes the notebooks on every push
 tests/                             start the server, check what it offers and what it publishes
 ```

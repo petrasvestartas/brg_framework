@@ -6,6 +6,7 @@ Every markdown file ``src/brg_mcp/<folder>/<page>.md`` (or ``<folder>/<subfolder
     fd/readme.md                     ->   fd
     fd/01_algorithm.md               ->   fd_algorithm
     fd/10_compas/03_hypar_membrane.md ->  fd_compas_hypar_membrane
+    tna/06_compas/09_barrel_vault.md  ->  tna_compas_barrel_vault
 
 A new command is a new markdown file; this file does not change.
 Each command reaches the chatbot in two ways:
@@ -17,6 +18,7 @@ Each command reaches the chatbot in two ways:
 
 """
 
+import re
 from pathlib import Path
 
 from fastmcp import FastMCP
@@ -70,16 +72,28 @@ def summary(path):
 
 
 def command_list():
-    """Format all available commands as a grouped Markdown bullet list."""
-    groups = {}
-    for cmd, path in COMMANDS.items():
-        parts = path.relative_to(HERE).parts
-        group = parts[0] if len(parts) == 2 else "{}/{}".format(parts[0], plain(parts[1]))
-        groups.setdefault(group, []).append("- `mcp_brg_{}`: {}".format(cmd, summary(path)))
-    sections = ["### `{}`\n\n{}".format(group, "\n".join(lines)) for group, lines in groups.items()]
+    """Format the menu: one line per method, with its package.
+
+    A method is a folder with a ``readme.md``, such as ``fd/``. Its package is the folder ``compas_<method>/``, such as ``compas_fd/``.
+    The pages of a method are listed by the method's own command, ``mcp_brg_fd``, not here.
+
+    Returns
+    -------
+    str
+
+    """
+    folders = sorted(path.parent.name for name, path in COMMANDS.items() if path.stem == "readme" and path.parent.parent == HERE)
+    lines = []
+    for folder in folders:
+        if folder.startswith("compas_") and folder.removeprefix("compas_") in folders:
+            continue
+        line = "- `mcp_brg_{}`: {}".format(folder, summary(COMMANDS[folder]))
+        if "compas_" + folder in folders:
+            line += ", package `compas_{0}` (`mcp_brg_compas_{0}`)".format(folder)
+        lines.append(line)
     return (
-        "Reply with this exact Markdown list (keeping headings, bullet points, and code formatting intact):\n\n"
-        "## BRG MCP Commands\n\n" + "\n\n".join(sections)
+        "Reply with this exact Markdown list (keeping headings, bullet points, and code formatting intact), "
+        "then ask which method the user wants:\n\n## BRG methods\n\n" + "\n".join(lines)
     )
 
 
@@ -88,10 +102,28 @@ RUN = (
     "Reply with the full Markdown text below (keeping all headings, bullet lists, links, and the complete Python code block with `compas_viewer` intact). "
     "At the end, ask the user if they want you to save and run the Python script now. "
     "When the user confirms, write the Python code block to its named `.py` file in the current working folder, "
-    "ensure `compas_fd` and `compas_viewer` are installed (if no active Python environment has them, install `uv` if missing, "
-    "run `uv init --bare` and `uv add compas_fd compas_viewer`), and run `uv run python <file>.py` so it prints the output "
+    "ensure {names} are installed (if no active Python environment has them, install `uv` if missing, "
+    "run `uv init --bare` and `uv add {packages}`), and run `uv run python <file>.py` so it prints the output "
     "and opens the 3D `compas_viewer` window.\n\n"
 )
+
+
+def packages_of(text):
+    """The COMPAS packages that the Python code of a page imports, besides ``compas`` itself.
+
+    Parameters
+    ----------
+    text : str
+        The text of a page with a Python code block.
+
+    Returns
+    -------
+    list[str]
+        For example ``["compas_tna", "compas_viewer"]``, the viewer last.
+
+    """
+    packages = set(re.findall(r"^(?:from|import) (compas_[a-z]+)", text, re.M))
+    return sorted(packages, key=lambda package: (package == "compas_viewer", package))
 
 
 def reply(name):
@@ -122,7 +154,8 @@ def reply(name):
     if notebooks:
         text += "\n\n## Notebooks\n\n" + "\n".join("- [{}]({})".format(title(notebook), link(notebook)) for notebook in notebooks)
     if "```python" in text:
-        return RUN + text.strip()
+        packages = packages_of(text)
+        return RUN.format(names=" and ".join("`{}`".format(package) for package in packages), packages=" ".join(packages)) + text.strip()
     return "Reply with this exact Markdown text (keeping all headings, bullet lists, and links intact), nothing added:\n\n" + text.strip()
 
 
