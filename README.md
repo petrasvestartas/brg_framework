@@ -7,12 +7,12 @@ Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). 
 ## Installation Users - MCP
 
 #### Claude
-```bash
+
 Click your name (bottom left) → Settings → Connectors. On some versions it's the left menu → Plugins.
 Click Add → Add custom connector. Don't use the search box.
 Name: BRG. URL: https://brg-mcp.fastmcp.app/mcp. Leave the OAuth fields empty, then click Add.
 Start a new chat and type mcp_brg. You should see the "BRG methods" menu.
-```
+
 
 ## Installation Devs - Skills
 
