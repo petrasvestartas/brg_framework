@@ -12,7 +12,7 @@ def test_version_matches_the_installed_metadata():
 
 
 def test_every_brg_package_is_installed():
-    for name in PACKAGES:
+    for name in ["compas_framework"] + PACKAGES:
         assert importlib.metadata.version(name)
 
 

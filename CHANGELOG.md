@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* `brg_framework` package: installs `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags` and `compas_viewer`.
+* `brg_framework` package: installs `compas_framework`, then `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags` and `compas_viewer`.
 * `brg` command: `brg install`, `brg examples`, `brg copy <name>`, `brg version`.
 * The `brg-methods` skill ships inside the package.
 

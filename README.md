@@ -11,7 +11,7 @@ pip install "git+https://github.com/petrasvestartas/brg_framework.git"
 brg install
 ```
 
-1. `pip install` installs the BRG packages: `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags`, with `compas` and `compas_viewer`.
+1. `pip install` installs [`compas_framework`](https://github.com/compas-dev/compas_framework) first (`compas`, `compas_viewer`, `compas_cgal`, `compas_gmsh`, `compas_libigl`, `compas_model`, `compas_session`, `compas_shapeop`), then the BRG packages: `compas_fd`, `compas_dr`, `compas_tna`, `compas_tno`, `compas_dem`, `compas_ags`.
 2. `brg install` copies the `brg-methods` skill into Claude Code (`~/.claude/skills`) and the other agents (`~/.agents/skills`), and prints the MCP server address.
 
 Other commands:
