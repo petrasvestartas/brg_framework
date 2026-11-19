@@ -31,7 +31,7 @@ brg_framework/
 2. **Links, not copies.** This repository links to each package. It does not copy package documentation or API.
 3. **The installed package is the API truth.** The agent checks the installed version and reads its docstrings.
 4. **Every example in this repository is a real `.py` file that CI runs** against a pinned package version.
-5. **One MCP server, with two tools at most.** For learners it returns the full BRG text, and the chat shows that text as the answer, not a link.
+5. **One MCP server.** For learners it returns the full BRG text.
 6. **Skills follow the [Agent Skills specification](https://agentskills.io/specification).** The `name` is lowercase with hyphens and equals the folder name. The `description` says what it does and when to use it.
 
 ## What belongs where
