@@ -4,8 +4,6 @@ Shared knowledge for the Block Research Group Python packages: theory, teaching 
 
 Installing Python and COMPAS itself is covered by [COMPAS](https://compas.dev). This repository adds BRG theory and points to the individual BRG packages.
 
-Help people and coding agents (Claude Code, Codex, Kimi Code, Antigravity) find the right theory and the right BRG package.
-
 ## Installation
 
 ### Claude
