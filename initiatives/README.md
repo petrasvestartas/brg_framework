@@ -18,3 +18,5 @@ initiatives/<name>/
 ```
 
 A decision is `Proposed` until the user accepts it. Only then change it to `Accepted`.
+
+The first initiative is [`compas-3-compatibility`](compas-3-compatibility/README.md). It is a worked example: the inventory, the proposal and two `Proposed` decisions.

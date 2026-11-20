@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Documentation site at https://blockresearchgroup.github.io/brg_framework/ (MkDocs Material): installation with the supported Python versions, the list of packages, contributing, release, changelog and license.
 * Agent guidance that follows the [COMPAS framework](https://github.com/compas-dev/compas_framework/tree/c3-upgrade) (`c3-upgrade`): links to its `AGENTS.md`, agents, skills and initiatives, and a workflow section in `AGENTS.md` and the `brg-methods` skill (investigate, design and stop for approval, implement, review).
-* `initiatives/` with the handoff and decision templates, in the `compas_framework` layout.
+* `initiatives/` with the handoff and decision templates, in the `compas_framework` layout, and the first initiative, `compas-3-compatibility` (proposed, not implemented).
 * Development tooling: `invoke` tasks (`test`, `lint`, `format`, `typecheck`, `release`, `prepare-changelog`), `pyright` type check, and the `bump-my-version` configuration.
 * GitHub templates: code of conduct, issue and pull request templates, and a changelog check on pull requests.
 

@@ -40,6 +40,16 @@ For any change that is more than a small fix, follow the workflow in [`compas_fr
 5. Record each significant decision as one file in `initiatives/<name>/decisions/NNN-title.md`, copied from `initiatives/_template/decision.md`. Mark it `Proposed` until the user accepts it. Keep the handoff in `initiatives/<name>/handoff.md`, copied from `initiatives/_template/handoff.md`. The layout is in [`initiatives/README.md`](initiatives/README.md) and follows [theirs](https://github.com/compas-dev/compas_framework/tree/c3-upgrade/initiatives).
 6. Do not merge, tag or publish without explicit approval.
 
+## Start or resume an initiative
+
+An initiative is a larger change with a plan and decisions. It lives in `initiatives/<name>/`. See [`initiatives/README.md`](initiatives/README.md).
+
+- **Start.** Create the branch `initiative/<name>`. Copy the templates from `initiatives/_template/`. The user writes `objective.md`. Then investigate (`inventory.md`), design (`proposal.md` and the decisions, all `Proposed`) and stop for approval.
+- **Resume.** If the user says `Continue <name> from initiatives/<name>/handoff.md`, or the task names an initiative, read its `handoff.md` first, then only the files it links.
+- **Work.** Do the approved work on the branch `initiative/<name>` and open a pull request. Do not merge or release without the user's approval.
+- **Checkpoint.** Update `handoff.md` before you stop: the phase, the exact branch and commit, what is approved, the next tasks and what was verified.
+- **Start a new conversation** for each initiative, or for each phase of a large one.
+
 ## Rules
 
 1. Write each thing once. Theory lives only in `theory/`.
