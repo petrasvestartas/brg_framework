@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* CI: actions pinned to commit SHAs and updated (`checkout` v7, `setup-uv` v10), `persist-credentials: false`.
+* CI: the package is built once, checked with `twine check`, smoke-tested as a wheel in a clean environment, and the same files are published to PyPI (`pypa/gh-action-pypi-publish`) and attached to the GitHub release. The tag must match the version.
+* CI: the docs are built in strict mode on pull requests that touch them, and deployed only from `main`.
 * Releases are published to PyPI with trusted publishing (environment `pypi`), and create a GitHub release.
 * `build` workflow tests Python 3.10 to 3.13 on Linux, macOS and Windows, and the `server`.
 * `.gitignore`: caches, `.DS_Store` and `*.egg-info/`.

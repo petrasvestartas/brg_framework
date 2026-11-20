@@ -28,13 +28,17 @@ brg_framework/
 ├── AGENTS.md                      # for people and agents editing this repository
 ├── README.md                      # this file
 ├── pyproject.toml                 # pip install brg_framework
+├── tasks.py                       # invoke test, lint, format, typecheck, release
+├── mkdocs.yml                     # the documentation site
 ├── CHANGELOG.md
 ├── LICENSE
 ├── src/brg_framework/             # the package: version, list of BRG packages, the brg command
 │   ├── __init__.py
 │   └── cli.py
 ├── tests/                         # tests of the package
-├── .github/workflows/             # build: checks on every push; release: PyPI on a v* tag
+├── docs/                          # the documentation site (GitHub Pages)
+├── initiatives/                   # plans and decisions, in the compas_framework layout
+├── .github/workflows/             # build: checks on every push; release: PyPI on a v* tag; docs: site on push
 ├── theory/                        # one folder per method: fd, dr, tna, tno, dem, ags
 │   └── fd/
 │       ├── index.md               # what, when, assumptions, limits
