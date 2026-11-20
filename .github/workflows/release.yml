@@ -1,17 +1,41 @@
-name: release
-
 on:
   push:
     tags:
       - "v*"
 
+name: Create Release
+
 jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: uv sync --extra dev
+      - run: uv run ruff check .
+      - run: uv run pytest -q
+      - run: uv run python -c "import brg_framework"
+
   publish:
+    needs: build
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v6
       - run: uv build
-      - run: uv publish
+      - run: uv publish --trusted-publishing always
+      - name: Create GitHub release
         env:
-          UV_PUBLISH_TOKEN: ${{ secrets.PYPI }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "${{ github.ref_name }}" dist/* --title "BRG framework ${{ github.ref_name }}" --generate-notes

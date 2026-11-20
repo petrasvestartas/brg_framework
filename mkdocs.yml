@@ -1,0 +1,9 @@
+site_name: BRG framework
+site_url: https://blockresearchgroup.github.io/brg_framework/
+repo_url: https://github.com/BlockResearchGroup/brg_framework
+docs_dir: theory
+theme:
+  name: material
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true

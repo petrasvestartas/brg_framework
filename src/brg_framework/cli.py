@@ -1,9 +1,9 @@
 """The command ``brg``.
 
-    brg install                 copy the brg-methods skill into Claude Code and the other agents, print the MCP address
-    brg examples                list the BRG examples
-    brg copy tna_cross_vault    write tna_cross_vault.py into the current folder
-    brg version                 the versions of brg_framework and the BRG packages
+brg install                 copy the brg-methods skill into Claude Code and the other agents, print the MCP address
+brg examples                list the BRG examples
+brg copy tna_cross_vault    write tna_cross_vault.py into the current folder
+brg version                 the versions of brg_framework and the BRG packages
 
 """
 

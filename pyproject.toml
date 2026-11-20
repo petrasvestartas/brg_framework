@@ -37,7 +37,8 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff"]
+dev = ["pytest", "ruff", "invoke", "compas_invocations2", "bump-my-version", "build"]
+docs = ["mkdocs", "mkdocs-material"]
 
 [project.scripts]
 brg = "brg_framework.cli:main"
@@ -79,3 +80,23 @@ extend-exclude = ["server", "*.ipynb"]
 [tool.ruff.lint]
 select = ["E", "F", "I"]
 isort = { force-single-line = true }
+
+# ============================================================================
+# release: `invoke release patch|minor|major` bumps these, tags and pushes
+# ============================================================================
+
+[tool.bumpversion]
+current_version = "0.1.0"
+message = "Bump version to {new_version}"
+commit = true
+tag = true
+
+[[tool.bumpversion.files]]
+filename = "src/brg_framework/__init__.py"
+search = "{current_version}"
+replace = "{new_version}"
+
+[[tool.bumpversion.files]]
+filename = "CHANGELOG.md"
+search = "Unreleased"
+replace = "[{new_version}] {now:%Y-%m-%d}"
