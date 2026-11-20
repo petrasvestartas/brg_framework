@@ -5,7 +5,7 @@ The command ``brg`` installs the skill and copies examples. Run ``brg --help``.
 
 """
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 MCP_URL = "https://brg-mcp.fastmcp.app/mcp"
 
