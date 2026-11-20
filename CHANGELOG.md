@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+* The `brg-methods` skill tells agents to follow the COMPAS framework guidelines (`compas_framework`).
+
 ### Removed
 
 ## [0.1.1] 2026-11-20
