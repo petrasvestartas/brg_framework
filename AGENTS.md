@@ -15,6 +15,10 @@ The package `brg_framework` (`src/`) installs the BRG packages and the command `
 | `server/` | The MCP server | yes |
 | `evals/` | Tasks to measure tokens, time and correctness | yes |
 
+## COMPAS framework
+
+`compas_framework` is installed with this package. When you write code, follow its guidelines: https://github.com/compas-dev/compas_framework (`AGENTS.md`). Where they differ from this file, this file wins for this repository only.
+
 ## Rules
 
 1. Write each thing once. Theory lives only in `theory/`.

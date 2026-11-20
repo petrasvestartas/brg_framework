@@ -8,6 +8,9 @@ license: MIT
 
 Pick the package from the table. Then let the package do the work. Do not solve the problem by hand.
 
+Write code that follows the COMPAS framework guidelines: https://github.com/compas-dev/compas_framework (read its `AGENTS.md`).
+`compas_framework` is installed with `brg_framework`. The BRG packages build on it.
+
 | The user wants | Method | Package | Repository | Docs |
 | --- | --- | --- | --- | --- |
 | Shape of a cable net, membrane or hanging network from force densities | Force density | `compas_fd` | https://github.com/BlockResearchGroup/compas_fd | https://blockresearchgroup.github.io/compas_fd |
