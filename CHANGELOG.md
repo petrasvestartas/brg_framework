@@ -9,24 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Documentation site (MkDocs Material, deployed to GitHub Pages on push to `main`): Introduction, Installation (with the list of installed packages), License and Changelog.
-* `tasks.py` with `invoke` tasks (`test`, `lint`, `format`, `typecheck`, `release`, `prepare-changelog`) from `compas_invocations2`, and the `bump-my-version` configuration.
-* GitHub templates: code of conduct, bug report and feature request issues, pull request template, changelog check on pull requests.
-* Docs: Contributing and Release pages. `pyright` type check in CI and `invoke typecheck`.
+* Documentation site at https://blockresearchgroup.github.io/brg_framework/ (MkDocs Material): installation with the list of installed packages, contributing, release, changelog and license.
+* Agent guidance that follows the [COMPAS framework](https://github.com/compas-dev/compas_framework/tree/c3-upgrade) (`c3-upgrade`): links to its `AGENTS.md`, agents, skills and initiatives, and a workflow section in `AGENTS.md` and the `brg-methods` skill (investigate, design and stop for approval, implement, review).
 * `initiatives/` with the handoff and decision templates, in the `compas_framework` layout.
-* Workflow section in `AGENTS.md` and the skill that points to the `compas_framework` workflow.
-* Links to the COMPAS agent guides (`compas_framework` `AGENTS.md`, agents, skills and initiatives on `c3-upgrade`, and `compas` `AGENTS.md`) in `AGENTS.md`, the skill and the docs.
+* Development tooling: `invoke` tasks (`test`, `lint`, `format`, `typecheck`, `release`, `prepare-changelog`), `pyright` type check, and the `bump-my-version` configuration.
+* GitHub templates: code of conduct, issue and pull request templates, and a changelog check on pull requests.
 
 ### Changed
 
-* CI: actions pinned to commit SHAs and updated (`checkout` v7, `setup-uv` v10), `persist-credentials: false`.
-* CI: the package is built once, checked with `twine check`, smoke-tested as a wheel in a clean environment, and the same files are published to PyPI (`pypa/gh-action-pypi-publish`) and attached to the GitHub release. The tag must match the version.
-* CI: the docs are built in strict mode on pull requests that touch them, and deployed only from `main`.
-* Releases are published to PyPI with trusted publishing (environment `pypi`), and create a GitHub release.
-* `build` workflow tests Python 3.10 to 3.13 on Linux, macOS and Windows, and the `server`.
-* `.gitignore`: caches, `.DS_Store` and `*.egg-info/`.
+* CI follows the `compas_framework` workflows: actions pinned to commit SHAs, read-only permissions, concurrency, `ruff format --check` and `pyright`, and tests on Python 3.10 to 3.13 on Linux, macOS and Windows.
+* Release: the package is built once, checked (`twine check`, clean wheel smoke test, tag equals version), then the same files are published to PyPI with trusted publishing and attached to the GitHub release.
+* Docs are built in strict mode on pull requests and deployed from `main`.
 * Fixed the types in `brg_framework.cli`.
-* CI: read-only permissions, concurrency, `fail-fast: false` and `ruff format --check`.
 
 ### Removed
 
