@@ -56,6 +56,7 @@ nav:
   - Home: index.md
   - Getting Started:
       - Installation: installation.md
+      - Packages: packages.md
       - Contributing: contributing.md
   - Project:
       - Release: release.md
