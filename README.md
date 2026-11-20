@@ -112,12 +112,6 @@ npx skills add petrasvestartas/brg_framework -g -y -a claude-code
 npx skills add petrasvestartas/brg_framework -g
 ```
 
-
-
-
-
-
-
 ## MCP server
 
 - Lives in `server/` in this repository, built with FastMCP.
@@ -138,10 +132,6 @@ python copy_example.py tna_cross_vault    # write tna_cross_vault.py
 ```
 
 **Hooks (planned, not built).** The agent app would run the same script by itself, without a model call. Build them only if the measurements below show they save something.
-
-## Measure first
-
-Compare setups on the same tasks: package only, the server, the skill, the skill and the server. Record input, cached and output tokens, model calls, wall time, and pass or fail. Judge correctness first, then tokens, then time. No saving is claimed until these numbers exist.
 
 ## References
 
