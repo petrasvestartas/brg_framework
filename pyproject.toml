@@ -37,7 +37,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff", "invoke", "compas_invocations2", "bump-my-version", "build"]
+dev = ["pytest", "ruff", "pyright", "invoke", "compas_invocations2", "bump-my-version", "build"]
 docs = ["mkdocs", "mkdocs-material"]
 
 [project.scripts]
@@ -72,6 +72,9 @@ exclude = ["__pycache__"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.pyright]
+include = ["src", "tests"]
 
 [tool.ruff]
 line-length = 179

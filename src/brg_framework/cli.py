@@ -37,6 +37,8 @@ def copy_example():
     """The script of the skill that copies examples. It is written once, in the skill."""
     path = skill_folder() / "scripts" / "copy_example.py"
     spec = importlib.util.spec_from_file_location("brg_copy_example", path)
+    if spec is None or spec.loader is None:
+        raise ImportError("Cannot load {}".format(path))
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

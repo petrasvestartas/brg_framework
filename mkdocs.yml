@@ -53,8 +53,11 @@ plugins:
   - search
 
 nav:
+  - Home: index.md
   - Getting Started:
-      - Introduction: index.md
       - Installation: installation.md
-      - License: license.md
+      - Contributing: contributing.md
+  - Project:
+      - Release: release.md
       - Changelog: changelog.md
+      - License: license.md

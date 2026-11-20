@@ -14,7 +14,7 @@
 _Put an `x` in the boxes that apply. You can also fill these out after creating the PR. If you're unsure about any of them, don't hesitate to ask. We're here to help! This is simply a reminder of what we are going to look for before merging your code._
 
 - [ ] I added a line to the `CHANGELOG.md` file in the `Unreleased` section under the most fitting heading (e.g. `Added`, `Changed`, `Removed`).
-- [ ] I ran all tests on my computer and it's all green (i.e. `uv run pytest -q`).
-- [ ] I ran lint on my computer and there are no errors (i.e. `uv run ruff check .`).
+- [ ] I ran all tests on my computer and it's all green (`uv run invoke test`).
+- [ ] I ran lint and the type check on my computer and there are no errors (`uv run invoke lint`, `uv run invoke typecheck`).
 - [ ] I have added tests that prove my fix is effective or that my feature works.
 - [ ] I have added necessary documentation (if appropriate)

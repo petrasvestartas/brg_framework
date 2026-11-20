@@ -7,6 +7,10 @@ on:
       - master
       - '*.LTS'
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   build:
     name: Check Actions

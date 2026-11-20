@@ -4,3 +4,7 @@ __pycache__/
 dist/
 uv.lock
 site/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+*.egg-info/

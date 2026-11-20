@@ -8,7 +8,15 @@ license: MIT
 
 Pick the package from the table. Then let the package do the work. Do not solve the problem by hand.
 
-Write code that follows the COMPAS framework guidelines: https://github.com/compas-dev/compas_framework (read its `AGENTS.md`).
+Write code that follows the COMPAS guidelines. Read them before you write code. They are on the branch `c3-upgrade` (the move to COMPAS 3) and move to `main` when it is merged:
+- https://github.com/compas-dev/compas_framework/blob/c3-upgrade/AGENTS.md: coordinator instructions and engineering principles.
+- https://github.com/compas-dev/compas_framework/tree/c3-upgrade/.codex/agents: `architect`, `explorer`, `implementer`, `reviewer`, `documenter`. Use the architect for design and the reviewer to check.
+- https://github.com/compas-dev/compas_framework/tree/c3-upgrade/.agents/skills: `update-docs`, `update-docstrings`, `update-type-hints`.
+- https://github.com/compas-dev/compas_framework/tree/c3-upgrade/initiatives: objectives and accepted decisions.
+- https://github.com/compas-dev/compas/blob/initiative/repository-modernisation/AGENTS.md: Python 3.12+ style and typing rules of `compas`.
+
+For anything bigger than a small fix, follow the workflow in that `AGENTS.md`: investigate, design and stop for approval, implement, review. Do not publish without approval.
+
 `compas_framework` is installed with `brg_framework`. The BRG packages build on it.
 
 | The user wants | Method | Package | Repository | Docs |
