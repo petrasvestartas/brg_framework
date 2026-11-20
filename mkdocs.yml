@@ -1,9 +1,98 @@
 site_name: BRG framework
 site_url: https://blockresearchgroup.github.io/brg_framework/
+
+repo_name: BlockResearchGroup/brg_framework
 repo_url: https://github.com/BlockResearchGroup/brg_framework
-docs_dir: theory
+
+copyright: Copyright &copy; ETH Zurich - Block Research Group
+
 theme:
   name: material
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - content.code.copy
+    - navigation.footer
+    - navigation.sections
+    - navigation.top
+    - navigation.tabs
+    - search.highlight
+    - toc.follow
+
 markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
+  - admonition
+  - attr_list
+  - pymdownx.highlight
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - toc:
+      permalink: "¤"
+
+plugins:
+  - search
+
+nav:
+  - Getting Started:
+      - Introduction: index.md
+      - Installation: installation.md
+      - License: license.md
+      - Changelog: changelog.md
+  - Theory:
+      - Overview: theory/README.md
+      - Force density:
+          - Overview: theory/fd/index.md
+          - Formulation: theory/fd/formulation.md
+          - Glossary: theory/fd/glossary.md
+          - References: theory/fd/references.md
+          - Teaching: theory/fd/teaching/README.md
+      - Dynamic relaxation:
+          - Overview: theory/dr/index.md
+          - Formulation: theory/dr/formulation.md
+          - Glossary: theory/dr/glossary.md
+          - References: theory/dr/references.md
+          - Teaching: theory/dr/teaching/README.md
+      - Thrust network analysis:
+          - Overview: theory/tna/index.md
+          - Formulation: theory/tna/formulation.md
+          - Glossary: theory/tna/glossary.md
+          - References: theory/tna/references.md
+          - Teaching: theory/tna/teaching/README.md
+      - Thrust network optimisation:
+          - Overview: theory/tno/index.md
+          - Formulation: theory/tno/formulation.md
+          - Glossary: theory/tno/glossary.md
+          - References: theory/tno/references.md
+          - Teaching: theory/tno/teaching/README.md
+      - Discrete element model:
+          - Overview: theory/dem/index.md
+          - Formulation: theory/dem/formulation.md
+          - Glossary: theory/dem/glossary.md
+          - References: theory/dem/references.md
+          - Teaching: theory/dem/teaching/README.md
+      - Algebraic graph statics:
+          - Overview: theory/ags/index.md
+          - Formulation: theory/ags/formulation.md
+          - Glossary: theory/ags/glossary.md
+          - References: theory/ags/references.md
+          - Teaching: theory/ags/teaching/README.md
