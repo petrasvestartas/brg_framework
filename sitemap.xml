@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/changelog/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/contributing/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/installation/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/license/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/packages/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://blockresearchgroup.github.io/brg_framework/release/</loc>
+         <lastmod>2026-11-20</lastmod>
+    </url>
+</urlset>
